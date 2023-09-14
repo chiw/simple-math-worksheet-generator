@@ -25,7 +25,10 @@ jobs:
 
       - name: Install dependencies
         # run: pnpm install
-        run: pnpm clean install --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Prepare SMUI themes
+        run: pnpm run prepare
 
       - name: build
         env:
