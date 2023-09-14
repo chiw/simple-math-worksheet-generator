@@ -14,8 +14,8 @@
     let topAppBar: TopAppBarComponentDev;
 
     let darkTheme: boolean = false;
-    let materialThemeHerf = 'node_modules/svelte-material-ui/themes/material.css';
-    let materialDarkThemeHerf = 'node_modules/svelte-material-ui/themes/material-dark.css';
+    let materialThemeHerf = 'https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0-beta.14/themes/material.min.css';
+    let materialDarkThemeHerf = 'https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0-beta.14/themes/material-dark.min.css';
 
     $: modeLabel = `switch to ${darkTheme ? 'light' : 'dark'} mode`;
 
