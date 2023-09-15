@@ -4,22 +4,32 @@
 
 // Svelte Colors!
 @use '@material/theme/index' as theme with (
-  $primary: #ff3e00,
-  $secondary: #676778,
-  $surface: #fff,
-  $background: #fff,
-  $error: color-palette.$red-900
+  // $primary: #ff3e00,
+  // $secondary: #676778,
+  // $surface: #fff,
+  // $background: #fff,
+  // $error: color-palette.$red-900
+    /*$primary: #3f51b5,*/
+    $primary: #fff,
+    $secondary: #f50057,
+    $surface: #fff,
+    $background: #fafafa,
+    $error: #f44336
 );
 
 html,
 body {
   background-color: theme.$surface;
-  color: theme.$on-surface;
+  color: theme.$on-surface;  
 }
 
 a {
-  color: #40b3ff;
+  color: color-palette.$blue-600;
 }
 a:visited {
-  color: color.scale(#40b3ff, $lightness: -35%);
+  color: color.scale(color-palette.$blue-600, $lightness: -35%);
+}
+
+.mdc-chip-set--choice .mdc-chip--selected {
+  background-color: var(--mdc-theme-surface, #000) !important;
 }

@@ -57,6 +57,7 @@ pnpm i -D @material/select
 pnpm i -D @material/floating-label
 pnpm i -D @material/notched-outline
 pnpm i -D @material/line-ripple
+pnpm i -D @material/menu
 pnpm i -D @material/menu-surface
 pnpm i -D @material/switch
 pnpm i -D @material/textfield

@@ -14,8 +14,12 @@
     let topAppBar: TopAppBarComponentDev;
 
     let darkTheme: boolean = false;
-    let materialThemeHerf = 'https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0-beta.14/themes/material.min.css';
-    let materialDarkThemeHerf = 'https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0-beta.14/themes/material-dark.min.css';
+    // let materialThemeHerf = 'https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0-beta.14/themes/material.min.css';
+    // let materialDarkThemeHerf = 'https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0-beta.14/themes/material-dark.min.css';
+
+    let materialThemeHerf = 'smui.min.css';
+    let materialDarkThemeHerf = 'smui-dark.min.css';
+
 
     $: modeLabel = `switch to ${darkTheme ? 'light' : 'dark'} mode`;
 
