@@ -46,3 +46,31 @@ a:visited {
 .mdc-chip__checkmark-svg {
   display: none !important;
 }
+
+/* text field focus floating label */
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* text field focus bottom border */
+.smui-text-field--standard .mdc-line-ripple::after {
+  border-bottom-color: #fff !important;
+  /* @alternate */
+  border-bottom-color: var(--mdc-theme-primary, #fff) !important;
+}
+
+/* select focus floating label */
+.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label {
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* select focus floating label */
+.mdc-floating-label .mdc-floating-label--float-above {
+  border-bottom-color: #fff !important;
+}
+
+/* select focus bottom border */
+.smui-select--standard:not(.mdc-select--disabled) .mdc-line-ripple::after {
+  border-bottom-color: #fff !important;
+  border-bottom-color: var(--mdc-theme-primary, #fff) !important;
+}

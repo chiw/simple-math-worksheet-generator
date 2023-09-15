@@ -13,17 +13,24 @@ a:visited {
   color: #115997;
 }
 
+/* Add some fine tunings here */
 .mdc-chip-set--choice .mdc-chip--selected {
   background-color: var(--mdc-theme-surface, #000) !important;
 }
 
+/* For chip selected */
 .mdc-chip--selected {
   background: #000 !important;
   color: #fff !important;
 }
 
+/* Not to display checked icon when selected */
 .mdc-chip__checkmark-svg {
   display: none !important;
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: rgba(45, 47, 47, 0.87);
 }
 
 .mdc-touch-target-wrapper {
