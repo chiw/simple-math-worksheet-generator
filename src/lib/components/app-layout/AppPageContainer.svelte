@@ -1,6 +1,8 @@
 <script lang="ts">
     import {onMount} from 'svelte';
 
+    import { base } from '$app/paths';
+
     // SMUI TopAppBar
     import type {TopAppBarComponentTopDev} from '@smui/top-app-bar';
     import TopAppBar, {Row, Section, Title, AutoAdjust} from '@smui/top-app-bar';
@@ -17,8 +19,8 @@
     // let materialThemeHerf = 'https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0-beta.14/themes/material.min.css';
     // let materialDarkThemeHerf = 'https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0-beta.14/themes/material-dark.min.css';
 
-    let materialThemeHerf = 'smui.min.css';
-    let materialDarkThemeHerf = 'smui-dark.min.css';
+    let materialThemeHerf = "smui.min.css";
+    let materialDarkThemeHerf = "smui-dark.min.css";
 
 
     $: modeLabel = `switch to ${darkTheme ? 'light' : 'dark'} mode`;
@@ -47,8 +49,8 @@
     media="screen and (prefers-color-scheme: dark)"
   />
   {:else if darkTheme}
-    <link rel="stylesheet" href="{materialThemeHerf}" media="print" />
-    <link rel="stylesheet" href="{materialDarkThemeHerf}" media="screen" />
+    <link rel="stylesheet" href="{base}/{materialThemeHerf}" media="print" />
+    <link rel="stylesheet" href="{base}/{materialDarkThemeHerf}" media="screen" />
   {:else}
     <link rel="stylesheet" href="{materialThemeHerf}" />
   {/if}
