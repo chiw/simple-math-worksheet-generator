@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: 'master'
+    branches: 'smui-custom-theme'
 
 jobs:
   build_site:
