@@ -62,6 +62,7 @@ pnpm i -D @material/menu-surface
 pnpm i -D @material/switch
 pnpm i -D @material/textfield
 pnpm i -D @smui/paper
+pnpm i -D @material/tooltip
 ```
 
 ## install SMUI

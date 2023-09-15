@@ -39,13 +39,11 @@
 <svelte:head>
   {#if darkTheme === undefined}
   <link
-    rel="stylesheet"
-    href="{materialThemeHerf}"
+    rel="stylesheet" href="{materialThemeHerf}"
     media="(prefers-color-scheme: light)"
   />
   <link
-    rel="stylesheet"
-    href="{materialDarkThemeHerf}"
+    rel="stylesheet" href="{materialDarkThemeHerf}"
     media="screen and (prefers-color-scheme: dark)"
   />
   {:else if darkTheme}
@@ -60,21 +58,13 @@
   <TopAppBar bind:this="{topAppBar}" variant="fixed" dense >
     <Row>
       <section class="">
-        <IconButton 
-          class="material-icons"
-          on:click="{toggleDrawer}"
-        >menu</IconButton>
+        <IconButton class="material-icons" 
+          on:click="{toggleDrawer}">menu</IconButton>
         <title>Standard</title>
       </section>
       <section class="">
-        <IconButton
-          aria-label="{modeLabel}"
-          class="material-icons"
-          on:click="{toggleMode}"
-          title="{modeLabel}"
-        >
-          {modeIcon}
-        </IconButton>
+        <IconButton aria-label="{modeLabel}" class="material-icons" 
+          on:click="{toggleMode}" title="{modeLabel}">{modeIcon}</IconButton>
       </section>
       <section class="" align="end" toolbar>
           <slot name="topAppBar" />

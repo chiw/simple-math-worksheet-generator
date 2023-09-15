@@ -3,6 +3,9 @@
     // SMUI IconButton
     import IconButton from '@smui/icon-button';
 
+    // SMUI Tooltip
+    import Tooltip, { Wrapper } from '@smui/tooltip';
+
     import { SimpleMathQuestionUtils } from '$lib/utils/simple-math-question-utils';
     import {
       twoNumbersQuestionGeneratorConfigStore,
@@ -25,10 +28,15 @@
     }
 </script>
 
+<Wrapper>
+  <IconButton class="material-icons" on:click="{generateWorksheet}">play_circle</IconButton>
+  <Tooltip>Generate worksheet</Tooltip>
+</Wrapper>
 
-<IconButton class="material-icons" on:click="{generateWorksheet}">play_circle</IconButton>
-
-<IconButton class="material-icons" on:click="{printWorksheet}">print</IconButton>
+<Wrapper>
+  <IconButton class="material-icons" on:click="{printWorksheet}">print</IconButton>
+  <Tooltip>Print</Tooltip>
+</Wrapper>
 
 
 <style>

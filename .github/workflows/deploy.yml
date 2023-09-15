@@ -28,7 +28,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Prepare SMUI themes
-        run: pnpm run prepare
+        run: pnpm run prepare && pnpm run prepare-dev
 
       - name: build
         env:

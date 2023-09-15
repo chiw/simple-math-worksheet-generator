@@ -30,6 +30,18 @@ a:visited {
   color: color.scale(color-palette.$blue-600, $lightness: -35%);
 }
 
+/* Add some fine tunings here */
 .mdc-chip-set--choice .mdc-chip--selected {
   background-color: var(--mdc-theme-surface, #000) !important;
+}
+
+/* For chip selected */
+.mdc-chip--selected {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* Not to display checked icon when selected */
+.mdc-chip__checkmark-svg {
+  display: none !important;
 }
