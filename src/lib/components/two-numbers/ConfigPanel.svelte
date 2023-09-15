@@ -1,5 +1,8 @@
 <script lang="ts">
 
+    // SMUI button
+    import Button, { Label, Icon } from '@smui/button'; 
+
     // SMUI text input
     import Textfield from '@smui/textfield';
     import {default as TextFieldIcon} from '@smui/textfield/icon';
@@ -7,7 +10,6 @@
 
     // SMUI checkbox
     import FormField from '@smui/form-field';
-    import Checkbox from '@smui/checkbox';
 
     // SMUI chip
     import Chip, { Set, Text as ChipText } from '@smui/chips';
@@ -17,10 +19,7 @@
 
     // SMUI select
     import Select, { Option } from '@smui/select';
-
-    // SMUI accordion
-    import Accordion, { Panel, Header as AccordionHeader, Content as AccordionContent } from '@smui-extra/accordion';
-
+    
     // import types and constants
     import { FLEX_DIRECTION_OPTIONS, FLEX_WRAP_OPTIONS, FLEX_JUSTIFY_CONTENT_OPTIONS, PaperSize } from "$lib/constants/WorksheetPageConstants";
 
@@ -62,6 +61,21 @@
             twoNumberWorksheetContainerStyleConfig.set(AppConstants.TWO_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.worksheetCointainerStyleConfig);
         }
     }
+
+    let layoutConfigPanelOpen = false;
+    let layoutConfigBtnMsg = 'Layout settings';
+    let layoutConfigBtnIcon = 'expand_more';
+    changeConfigPanelBtn(layoutConfigPanelOpen);
+
+    function toggleConfigPanel() {
+        layoutConfigPanelOpen = !layoutConfigPanelOpen;
+        changeConfigPanelBtn(layoutConfigPanelOpen);
+    }
+
+    function changeConfigPanelBtn(isOpen: boolean) {
+        layoutConfigBtnIcon = (isOpen? 'expand_less' : 'expand_more');
+    }
+    
 </script>
 
 <div style="margin-left:0.5em"  class="nonPrintable">
@@ -84,13 +98,17 @@
         <Switch bind:checked={$twoNumbersQuestionConfigStore.showAnswers} />
         <span slot="label">Show answers</span>
     </FormField>
+    
+    <Button on:click={toggleConfigPanel} class="button-shaped-round">
+        <Label>{layoutConfigBtnMsg}</Label>
+        <Icon class="material-icons">{layoutConfigBtnIcon}</Icon>
+    </Button>
+    
 </div>
 
 <div class="nonPrintable">
-<Accordion>
-    <Panel extend>
-        <AccordionHeader>Question layout settings</AccordionHeader>
-        <AccordionContent>
+        
+        {#if layoutConfigPanelOpen}
             <div style="margin-left:0.5em">
                 <Textfield bind:value={$twoNumberWorksheetContainerStyleConfig.pagePadding} label="Page padding" />
                 <Textfield bind:value={$twoNumberWorksheetContainerStyleConfig.contentContainerHeight} label="Page container height" />
@@ -142,10 +160,9 @@
                     </FormField>
                 </div>
             {/if}
+        {/if}
             
-        </AccordionContent>
-    </Panel>
-</Accordion>
+        
 </div>
 
 

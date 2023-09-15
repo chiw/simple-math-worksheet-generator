@@ -33,10 +33,7 @@
   <Tooltip>Generate worksheet</Tooltip>
 </Wrapper>
 
-<Wrapper>
-  <IconButton class="material-icons" on:click="{printWorksheet}">print</IconButton>
-  <Tooltip>Print</Tooltip>
-</Wrapper>
+<IconButton class="material-icons" on:click="{printWorksheet}">print</IconButton>
 
 
 <style>

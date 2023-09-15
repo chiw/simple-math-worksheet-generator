@@ -17,6 +17,16 @@
     $error: #f44336
 );
 
+@use '@material/button/mixins' as mdc-button;
+
+.button-shaped-round {
+  @include mdc-button.shape-radius(100%);
+  color: #fff !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+}
+
+
 html,
 body {
   background-color: theme.$surface;
