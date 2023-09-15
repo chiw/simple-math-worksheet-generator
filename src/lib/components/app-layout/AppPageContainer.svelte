@@ -52,7 +52,7 @@
     <link rel="stylesheet" href="{base}/{materialThemeHerf}" media="print" />
     <link rel="stylesheet" href="{base}/{materialDarkThemeHerf}" media="screen" />
   {:else}
-    <link rel="stylesheet" href="{materialThemeHerf}" />
+    <link rel="stylesheet" href="{base}/{materialThemeHerf}" />
   {/if}
 </svelte:head>
 
