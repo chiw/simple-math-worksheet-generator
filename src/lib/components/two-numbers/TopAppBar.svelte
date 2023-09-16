@@ -19,7 +19,8 @@
 
     // import stores
     import {
-        twoNumberWorksheetConfigStore
+        twoNumberWorksheetConfigStore,
+        twoNumbersWorksheetDataCountStore
     } from "$lib/stores/two-numbers";
 
     import { triggerPrinter } from '$lib/utils/print-utils';
@@ -33,7 +34,9 @@
   <Tooltip>Generate worksheet</Tooltip>
 </Wrapper>
 
-<IconButton class="material-icons" on:click="{printWorksheet}">print</IconButton>
+{#if $twoNumbersWorksheetDataCountStore > 0}
+  <IconButton class="material-icons" on:click="{printWorksheet}">print</IconButton>
+{/if}
 
 
 <style>
