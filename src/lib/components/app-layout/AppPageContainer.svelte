@@ -101,7 +101,8 @@
         <main class="main-content">
           {#if screenWidth < LargeScreenMinWidth }
             <div style="margin-left:0.5em" class="nonPrintable" transition:slide>
-              <details class="mdc-typography--subtitle2" style="margin-left:0.5em padding-top:0.5em" bind:open={drawerOpen}>
+              <details class="mdc-typography--subtitle1"
+                style="margin-left:0.5em; padding-top:0.5em" bind:open={drawerOpen}>
                   <summary>Worksheet Generator</summary>
                   <slot name="sideBar" />
               </details>

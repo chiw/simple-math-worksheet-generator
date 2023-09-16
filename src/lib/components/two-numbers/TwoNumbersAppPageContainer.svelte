@@ -18,13 +18,6 @@
 
         twoNumbersWorksheetDataWithPageSplitStore
     } from "$lib/stores/two-numbers";
-	
-
-    // import type { AppPageTopBarFunction } from '$lib/constants/AppConstants';
-    // let topAppBarFunctions: AppPageTopBarFunction[] = [
-    //     { iconButtonName: "check_circle", fn: generateWorksheet}, 
-    //     { iconButtonName: "print", fn: printWorksheet}
-    // ];
 </script>
 
 <AppPageContainer>

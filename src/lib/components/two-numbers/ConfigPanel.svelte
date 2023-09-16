@@ -1,11 +1,7 @@
 <script lang="ts">
 
-    // SMUI button
-    import Button, { Label, Icon } from '@smui/button'; 
-
     // SMUI text input
     import Textfield from '@smui/textfield';
-    import {default as TextFieldIcon} from '@smui/textfield/icon';
     import HelperText from '@smui/textfield/helper-text';
 
     // SMUI checkbox
@@ -28,7 +24,7 @@
         TwoNumbersWorksheetSize, TWO_NUMBERS_WORKSHEET_SIZE
     } from "$lib/constants/TwoNumbersQuestionConstants";
 
-    import { AppConstants, LargeScreenMinWidth } from '$lib/constants/AppConstants';
+    import { AppConstants } from '$lib/constants/AppConstants';
 
     // import stores   
     import { 
@@ -36,10 +32,23 @@
         twoNumbersQuestionHorizontalMethodStyleConfigStore,
         twoNumberQuestionColumnMethodStyleConfigStore,
         twoNumberWorksheetConfigStore,
-        twoNumberWorksheetContainerStyleConfig
+        twoNumberWorksheetContainerStyleConfig,
+        twoNumbersWorksheetDataCountStore
     } from "$lib/stores/two-numbers";
 
     let selectedWorksheetSize = TwoNumbersWorksheetSize.A4;
+
+    let totalPages: number = 0;
+    let worksheetMsg: string = 'No question is generated.';
+
+    let getWorksheetMsg = (numOfQuestions: number, totalPages: number): string => {
+        if(totalPages == 0) { return 'No question is generated'; }
+        return "Total ".concat(String(numOfQuestions))
+            .concat((numOfQuestions > 1) ? ' questions ' : ' question ')
+            .concat(String(totalPages))
+            .concat((totalPages > 1) ? ' pages ' : ' page ')
+            .concat('are generated.');
+    }
 
     $: {
         console.log(`selectedWorksheetSize is ${selectedWorksheetSize}`);
@@ -60,6 +69,9 @@
             twoNumberWorksheetConfigStore.set(AppConstants.TWO_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.worksheetConfig);
             twoNumberWorksheetContainerStyleConfig.set(AppConstants.TWO_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.worksheetCointainerStyleConfig);
         }
+
+        totalPages = Math.ceil($twoNumbersWorksheetDataCountStore / $twoNumberWorksheetConfigStore.questionsPerPage);
+        worksheetMsg = getWorksheetMsg($twoNumbersWorksheetDataCountStore, totalPages);
     }
 
     let basicSettingsOpen:boolean = true;
@@ -73,31 +85,31 @@
 <div style="margin-left:0.5em" class="nonPrintable">
 
     <div style="margin-left:0.5em">
-    <details class="mdc-typography--subtitle2" style="padding-top:0.5em" bind:open={basicSettingsOpen}>
-        <summary>Basic Settings</summary>
+        <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={basicSettingsOpen}>
+            <summary>Basic Settings</summary>
 
-        <Set chips={TWO_NUMBERS_WORKSHEET_SIZE} let:chip choice bind:selected={selectedWorksheetSize}>
-            <Chip {chip}>
-                <ChipText>{chip}</ChipText>
-            </Chip>
-        </Set>
+            <Set chips={TWO_NUMBERS_WORKSHEET_SIZE} let:chip choice bind:selected={selectedWorksheetSize}>
+                <Chip {chip}>
+                    <ChipText>{chip}</ChipText>
+                </Chip>
+            </Set>
 
-        <Textfield bind:value={$twoNumberWorksheetConfigStore.questionsPerPage} label="Questions per page" type="number" />
-        
-        <Select bind:value={$twoNumbersQuestionConfigStore.questionFormat} label="Question format">
-            <Option value="" />
-            {#each TWO_NUMBERS_QUESTION_FORMAT as choice}
-                <Option value={choice}>{choice}</Option>
-            {/each}
-        </Select>
+            <Textfield bind:value={$twoNumberWorksheetConfigStore.questionsPerPage} label="Questions per page" type="number" />
+            
+            <Select bind:value={$twoNumbersQuestionConfigStore.questionFormat} label="Question format">
+                <Option value="" />
+                {#each TWO_NUMBERS_QUESTION_FORMAT as choice}
+                    <Option value={choice}>{choice}</Option>
+                {/each}
+            </Select>
 
-        <FormField>
-            <Switch bind:checked={$twoNumbersQuestionConfigStore.showAnswers} />
-            <span slot="label">Show answers</span>
-        </FormField>        
-    </details>
+            <FormField>
+                <Switch bind:checked={$twoNumbersQuestionConfigStore.showAnswers} />
+                <span slot="label">Show answers</span>
+            </FormField>        
+        </details>
     
-        <details class="mdc-typography--subtitle2" style="padding-top:0.5em" bind:open={layoutSettingsOpen}>
+        <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={layoutSettingsOpen}>
             <summary>Page Layout Settings</summary>
 
             <div>
@@ -150,6 +162,8 @@
                 </div>
             {/if}
         </details>
+
+        <p class="mdc-typography--body2">{worksheetMsg}</p>
     </div>
 </div>
 
