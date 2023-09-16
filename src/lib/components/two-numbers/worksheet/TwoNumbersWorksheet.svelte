@@ -1,15 +1,16 @@
 <script lang="ts">
-
-    import TwoNumbersQuestionVertical from "../question/TwoNumbersQuestionVertical.svelte";
+    
     import TwoNumbersQuestionHorizontal from "../question/TwoNumbersQuestionHorizontal.svelte";
+    import TwoNumbersQuestionVertical from "../question/TwoNumbersQuestionVertical.svelte";
+    import TwoNumbersDivisionQuestionVertical from "../question/TwoNumbersDivisionQuestionVertical.svelte";
 
     import WorksheetPage from "$lib/components/worksheet/WorksheetPage.svelte";
 	
     import type { TwoNumbersQuestionWorksheetConfig } from "$lib/constants/TwoNumbersQuestionConstants";    
     import { TwoNumbersQuestionFormat } from "$lib/constants/TwoNumbersQuestionConstants";
     import { QuestionTypes, AppConstants } from "$lib/constants/AppConstants";
-
-	
+    import { MathOperators } from "$lib/constants/MathsConstants";
+		
     export let worksheetPages:any = [];
 
     let defaultTwoNumbersQuestionWorksheetConfig: TwoNumbersQuestionWorksheetConfig = AppConstants.TWO_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4;
@@ -49,22 +50,38 @@
 						operatorBoxMargin={horizonalMethodStyleConfig.operatorBoxMargin}
 						questionContainerMargin={horizonalMethodStyleConfig.questionContainerMargin}
                     />
-                {:else}
-                    <TwoNumbersQuestionVertical 
-                        questionId={questionIndex+1}
-						firstNumber={question.num1}
-						secondNumber={question.num2}
-						operator={question.operator}
-                        answer={questionConfig.showAnswers ? question.answer : ''}
+                {:else}                    
+                    {#if MathOperators.DIVIDE === question.operator }                    
+                        <TwoNumbersDivisionQuestionVertical 
+                            questionId={String(questionIndex+1)}
+                            dividend={question.num1}
+                            divisor={question.num2}
 
-                        showQuestionId={columnMethodStyleConfig.showQuestionId}
-                        questionIdFontSize={columnMethodStyleConfig.questionIdFontSize}
-                        questionIdWidth={columnMethodStyleConfig.questionIdWidth}
-                        questionFontSize={columnMethodStyleConfig.questionFontSize}
-                        questionContainerMargin={columnMethodStyleConfig.questionContainerMargin}
-                        questionContainerPadding={columnMethodStyleConfig.questionContainerPadding}
-                        questionRowNumberWidth={columnMethodStyleConfig.questionRowNumberWidth}
-                    />
+                            showQuestionId={columnMethodStyleConfig.showQuestionId}
+                            questionIdFontSize={columnMethodStyleConfig.questionIdFontSize}
+                            questionIdWidth={columnMethodStyleConfig.questionIdWidth}
+                            questionFontSize={columnMethodStyleConfig.questionFontSize}
+                            questionContainerMargin={columnMethodStyleConfig.questionContainerMargin}
+                            questionContainerPadding={columnMethodStyleConfig.questionContainerPadding}
+                            questionRowNumberWidth={columnMethodStyleConfig.questionRowNumberWidth}
+                        />
+                    {:else}
+                        <TwoNumbersQuestionVertical 
+                            questionId={String(questionIndex+1)}
+                            firstNumber={question.num1}
+                            secondNumber={question.num2}
+                            operator={question.operator}
+                            answer={questionConfig.showAnswers ? question.answer : ''}
+
+                            showQuestionId={columnMethodStyleConfig.showQuestionId}
+                            questionIdFontSize={columnMethodStyleConfig.questionIdFontSize}
+                            questionIdWidth={columnMethodStyleConfig.questionIdWidth}
+                            questionFontSize={columnMethodStyleConfig.questionFontSize}
+                            questionContainerMargin={columnMethodStyleConfig.questionContainerMargin}
+                            questionContainerPadding={columnMethodStyleConfig.questionContainerPadding}
+                            questionRowNumberWidth={columnMethodStyleConfig.questionRowNumberWidth}
+                        />
+                    {/if}
                 {/if}
             {/if}
         {/each}

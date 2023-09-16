@@ -78,7 +78,7 @@ export const AppConstants = {
                 showQuestionId: false,
                 questionIdFontSize: '3mm',
                 questionIdWidth: '12mm',
-                questionFontSize: '8mm',
+                questionFontSize: '7mm',
                 questionContainerMargin: '3mm',
                 questionContainerPadding: '2mm',
                 questionRowNumberWidth: '24mm'
@@ -113,7 +113,7 @@ export const AppConstants = {
                 showQuestionId: false,
                 questionIdFontSize: '3mm',
                 questionIdWidth: '12mm',
-                questionFontSize: '8mm',
+                questionFontSize: '7mm',
                 questionContainerMargin: '3mm',
                 questionContainerPadding: '2mm',
                 questionRowNumberWidth: '24mm'
