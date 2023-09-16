@@ -1,6 +1,8 @@
 <script lang="ts">
     import {onMount} from 'svelte';
 
+    import { slide } from 'svelte/transition';
+
     import { base } from '$app/paths';
 
     // SMUI TopAppBar
@@ -12,6 +14,7 @@
 
     // SMUI Drawer
     import Drawer, {AppContent, Content, Header, Title as DrawerTitle, Subtitle as DrawerSubtitle, Scrim, } from '@smui/drawer';
+	import { LargeScreenMinWidth } from '$lib/constants/AppConstants';
 
     let topAppBar: TopAppBarComponentDev;
 
@@ -34,9 +37,15 @@
 
     const toggleMode = () => (darkTheme = !darkTheme);
 
+    let screenWidth;
+
     let drawerOpen: boolean = true;
-    const toggleDrawer = () => (drawerOpen = !drawerOpen);
+    const toggleDrawer = () => {
+      drawerOpen = !drawerOpen;
+    };
 </script>
+
+<svelte:window bind:innerWidth={screenWidth} />
 
 <svelte:head>
   {#if darkTheme === undefined}
@@ -75,17 +84,29 @@
   </TopAppBar>
 
 
-<AutoAdjust {topAppBar}>    
-    <Drawer class="nonPrintable" variant="dismissible" fixed={false} bind:open={drawerOpen} style="z-index:auto;">        
-        <Content class="">            
-              <slot name="sideBar" />            
-        </Content>
-    </Drawer>
+<AutoAdjust {topAppBar}>
+    {#if screenWidth >= LargeScreenMinWidth}
+      <Drawer class="nonPrintable" variant="dismissible" fixed={false} bind:open={drawerOpen} style="z-index:auto;">
+          <Content class="">
+            <div class="columns margins ">
+              <slot name="sideBar" />
+            </div>         
+          </Content>
+      </Drawer>
+    {/if}
     
 
     <!-- <Scrim fixed={false} /> -->
     <AppContent class="app-content">    
-        <main class="main-content">          
+        <main class="main-content">
+          {#if screenWidth < LargeScreenMinWidth }
+            <div style="margin-left:0.5em" class="nonPrintable" transition:slide>
+              <details class="mdc-typography--subtitle2" style="margin-left:0.5em padding-top:0.5em" bind:open={drawerOpen}>
+                  <summary>Worksheet Generator</summary>
+                  <slot name="sideBar" />
+              </details>
+            </div>
+          {/if}
           <slot name="config" />
           <slot name="content" />
         </main>

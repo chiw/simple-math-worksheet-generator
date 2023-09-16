@@ -11,6 +11,8 @@ import { TwoNumbersQuestionFormat, TwoNumbersWorksheetSize } from "./TwoNumbersQ
 
 import type { TwoNumbersQuestionWorksheetConfig, TwoNumbersQuestionGeneratorConfig } from "./TwoNumbersQuestionConstants";
 
+export const LargeScreenMinWidth: number = 768;
+
 export enum QuestionTypes {
     TWO_NUMBERS = 'twoNumbers'
 }

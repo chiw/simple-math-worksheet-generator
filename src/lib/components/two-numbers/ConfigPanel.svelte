@@ -28,7 +28,7 @@
         TwoNumbersWorksheetSize, TWO_NUMBERS_WORKSHEET_SIZE
     } from "$lib/constants/TwoNumbersQuestionConstants";
 
-    import { AppConstants } from '$lib/constants/AppConstants';
+    import { AppConstants, LargeScreenMinWidth } from '$lib/constants/AppConstants';
 
     // import stores   
     import { 
@@ -62,59 +62,48 @@
         }
     }
 
-    let layoutConfigPanelOpen = false;
-    let layoutConfigBtnMsg = 'Layout settings';
-    let layoutConfigBtnIcon = 'expand_more';
-    changeConfigPanelBtn(layoutConfigPanelOpen);
+    let basicSettingsOpen:boolean = true;
+    let layoutSettingsOpen:boolean = false;
 
-    function toggleConfigPanel() {
-        layoutConfigPanelOpen = !layoutConfigPanelOpen;
-        changeConfigPanelBtn(layoutConfigPanelOpen);
-    }
-
-    function changeConfigPanelBtn(isOpen: boolean) {
-        layoutConfigBtnIcon = (isOpen? 'expand_less' : 'expand_more');
-    }
-    
+    let screenWidth;
 </script>
 
-<div style="margin-left:0.5em"  class="nonPrintable">
-    <Set chips={TWO_NUMBERS_WORKSHEET_SIZE} let:chip choice bind:selected={selectedWorksheetSize}>
-        <Chip {chip}>
-            <ChipText>{chip}</ChipText>
-        </Chip>
-    </Set>
+<svelte:window bind:innerWidth={screenWidth} />
 
-    <Textfield bind:value={$twoNumberWorksheetConfigStore.questionsPerPage} label="Questions per page" type="number" />
-    
-    <Select bind:value={$twoNumbersQuestionConfigStore.questionFormat} label="Question format">
-        <Option value="" />
-        {#each TWO_NUMBERS_QUESTION_FORMAT as choice}
-            <Option value={choice}>{choice}</Option>
-        {/each}
-    </Select>
+<div style="margin-left:0.5em" class="nonPrintable">
 
-    <FormField>
-        <Switch bind:checked={$twoNumbersQuestionConfigStore.showAnswers} />
-        <span slot="label">Show answers</span>
-    </FormField>
-    
-    <Button on:click={toggleConfigPanel} class="button-shaped-round">
-        <Label>{layoutConfigBtnMsg}</Label>
-        <Icon class="material-icons">{layoutConfigBtnIcon}</Icon>
-    </Button>
-    
-</div>
+    <div style="margin-left:0.5em">
+    <details class="mdc-typography--subtitle2" style="padding-top:0.5em" bind:open={basicSettingsOpen}>
+        <summary>Basic Settings</summary>
 
-<div class="nonPrintable">
+        <Set chips={TWO_NUMBERS_WORKSHEET_SIZE} let:chip choice bind:selected={selectedWorksheetSize}>
+            <Chip {chip}>
+                <ChipText>{chip}</ChipText>
+            </Chip>
+        </Set>
+
+        <Textfield bind:value={$twoNumberWorksheetConfigStore.questionsPerPage} label="Questions per page" type="number" />
         
-        {#if layoutConfigPanelOpen}
-            <div style="margin-left:0.5em">
+        <Select bind:value={$twoNumbersQuestionConfigStore.questionFormat} label="Question format">
+            <Option value="" />
+            {#each TWO_NUMBERS_QUESTION_FORMAT as choice}
+                <Option value={choice}>{choice}</Option>
+            {/each}
+        </Select>
+
+        <FormField>
+            <Switch bind:checked={$twoNumbersQuestionConfigStore.showAnswers} />
+            <span slot="label">Show answers</span>
+        </FormField>        
+    </details>
+    
+        <details class="mdc-typography--subtitle2" style="padding-top:0.5em" bind:open={layoutSettingsOpen}>
+            <summary>Page Layout Settings</summary>
+
+            <div>
                 <Textfield bind:value={$twoNumberWorksheetContainerStyleConfig.pagePadding} label="Page padding" />
                 <Textfield bind:value={$twoNumberWorksheetContainerStyleConfig.contentContainerHeight} label="Page container height" />
-            <!-- </div>
 
-            <div style="margin-left:0.5em"> -->
                 <Select bind:value={$twoNumberWorksheetContainerStyleConfig.flexDirection} label="Flex direction">
                     <Option value="" />
                     {#each FLEX_DIRECTION_OPTIONS as choice}
@@ -138,7 +127,7 @@
             </div>
 
             {#if $twoNumbersQuestionConfigStore.questionFormat === TwoNumbersQuestionFormat.HORIZONTAL_METHOD}
-                <div style="margin-left:0.5em">
+                <div>
                     <Textfield bind:value={$twoNumbersQuestionHorizontalMethodStyleConfigStore.fontSize} label="QuestionFontSize" />
                     <Textfield bind:value={$twoNumbersQuestionHorizontalMethodStyleConfigStore.numberBoxWidth} label="Number box width" />
                     <Textfield bind:value={$twoNumbersQuestionHorizontalMethodStyleConfigStore.numberBoxHeight} label="Number box height" />
@@ -147,7 +136,7 @@
                     <Textfield bind:value={$twoNumbersQuestionHorizontalMethodStyleConfigStore.questionContainerMargin} label="Question container margin" />
                 </div>
             {:else if $twoNumbersQuestionConfigStore.questionFormat === TwoNumbersQuestionFormat.COLUMN_METHOD}
-                <div style="margin-left:0.5em">                    
+                <div>                    
                     <Textfield bind:value={$twoNumberQuestionColumnMethodStyleConfigStore.questionIdFontSize} label="Question ID font size" />
                     <Textfield bind:value={$twoNumberQuestionColumnMethodStyleConfigStore.questionIdWidth} label="Question ID width" />
                     <Textfield bind:value={$twoNumberQuestionColumnMethodStyleConfigStore.questionFontSize} label="Question font size" />
@@ -160,9 +149,8 @@
                     </FormField>
                 </div>
             {/if}
-        {/if}
-            
-        
+        </details>
+    </div>
 </div>
 
 

@@ -10,17 +10,17 @@
     import Chip, { Set, Text as ChipText } from '@smui/chips';
 
     // import contants
+    import { LargeScreenMinWidth } from '$lib/constants/AppConstants';
     import { MATH_OPERATORS } from '$lib/constants/MathsConstants';
 
     // import stores
-    import { twoNumbersQuestionGeneratorConfigStore } from '$lib/stores/two-numbers';    
-
+    import { twoNumbersQuestionGeneratorConfigStore } from '$lib/stores/two-numbers';
 </script>
 
-<div class="columns margins ">
-    <div style="margin-left:0.5em">
-        <Textfield bind:value={$twoNumbersQuestionGeneratorConfigStore.firstNumRange} label="1st Number range" />    
-    </div>
+ <div>
+    <Textfield style="margin-left:0.5em"
+        bind:value={$twoNumbersQuestionGeneratorConfigStore.firstNumRange} label="1st Number range" />
+
 
     <FormField>
         <Checkbox bind:checked={$twoNumbersQuestionGeneratorConfigStore.firstNumReverse} />
@@ -28,10 +28,13 @@
             Reverse
         </span>
     </FormField>
+ </div>
 
-    <div style="margin-left:0.5em">
-        <Textfield bind:value={$twoNumbersQuestionGeneratorConfigStore.secondNumRange} label="2nd Number range" />
-    </div>
+
+ <div>
+    <Textfield style="margin-left:0.5em"
+        bind:value={$twoNumbersQuestionGeneratorConfigStore.secondNumRange} label="2nd Number range" />
+
 
     <FormField>
         <Checkbox bind:checked={$twoNumbersQuestionGeneratorConfigStore.secondNumReverse} />
@@ -39,14 +42,17 @@
             Reverse
         </span>
     </FormField>
+ </div>
 
-    <div style="margin-left:0.5em">
-        <Textfield bind:value={$twoNumbersQuestionGeneratorConfigStore.resultMin} label="Result min value" type="number" />
+ <div>
+    <Textfield style="margin-left:0.5em" 
+        bind:value={$twoNumbersQuestionGeneratorConfigStore.resultMin} label="Result min value" type="number" />
+    
+    <Textfield style="margin-left:0.5em"
+        bind:value={$twoNumbersQuestionGeneratorConfigStore.resultMax} label="Result max value" type="number" />
     </div>
-    <div style="margin-left:0.5em">
-        <Textfield bind:value={$twoNumbersQuestionGeneratorConfigStore.resultMax} label="Result max value" type="number" />
-    </div>
-
+    
+    <div>
     <FormField>
         <Checkbox bind:checked={$twoNumbersQuestionGeneratorConfigStore.allowNegative} />
         <span slot="label">Allow negative</span>
@@ -61,13 +67,14 @@
         <Checkbox bind:checked={$twoNumbersQuestionGeneratorConfigStore.randomOrder} />
         <span slot="label">Random Order</span>
     </FormField>
+ </div>
 
-    <Set chips={MATH_OPERATORS} let:chip filter bind:selected={$twoNumbersQuestionGeneratorConfigStore.questionOperator}>
-        <Chip {chip} touch>
-            <ChipText>{@html chip}</ChipText>
-        </Chip>
-    </Set>
-</div>
+<Set chips={MATH_OPERATORS} let:chip filter bind:selected={$twoNumbersQuestionGeneratorConfigStore.questionOperator}>
+    <Chip {chip} touch>
+        <ChipText>{@html chip}</ChipText>
+    </Chip>
+</Set>
+
 
 
 <style>
