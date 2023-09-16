@@ -73,9 +73,11 @@
     }
 
     .divisorNumberBox {
+		text-align: right;
         border-right: 1px black solid;
         border-radius: 0px 0px 16px 0px;
         padding: 0px 2px 0px 2px;
+		width: 8mm;		
     }
 
     .dividendNumberBox {
