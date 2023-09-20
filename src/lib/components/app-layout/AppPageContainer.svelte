@@ -68,18 +68,16 @@
 
   <TopAppBar bind:this="{topAppBar}" variant="fixed" dense >
     <Row>
-      <section class="">
+      <Section>
         <IconButton class="material-icons" 
           on:click="{toggleDrawer}">menu</IconButton>
-        <title>Standard</title>
-      </section>
-      <section class="">
+        <Title></Title>
+        <slot name="topAppBar" />
+      </Section>
+      <Section align="end" toolbar>
         <IconButton aria-label="{modeLabel}" class="material-icons" 
           on:click="{toggleMode}" title="{modeLabel}">{modeIcon}</IconButton>
-      </section>
-      <section class="" align="end" toolbar>
-          <slot name="topAppBar" />
-      </section>
+      </Section>
     </Row>
   </TopAppBar>
 
