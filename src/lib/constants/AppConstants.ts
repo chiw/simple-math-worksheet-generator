@@ -13,9 +13,9 @@ import type { TwoNumbersQuestionWorksheetConfig, TwoNumbersQuestionGeneratorConf
 
 export const LargeScreenMinWidth: number = 768;
 
-export enum QuestionTypes {
-    TWO_NUMBERS = 'twoNumbers'
-}
+export const QuestionTypes = {
+    TWO_NUMBERS : 'twoNumbers'
+} as const
 
 
 // export type NumberSequenceQuestionGeneratorConfig = {
