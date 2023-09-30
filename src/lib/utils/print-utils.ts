@@ -1,4 +1,4 @@
-import { PaperSize } from "$lib/constants/WorksheetPageConstants";
+import { PaperSize } from "$lib/components/common/worksheet/WorksheetPageConstants";
 
 export function triggerPrinter(paperSize: PaperSize): void {
     let css_A4_landscape: string = '@page { size: A4 landscape; }';

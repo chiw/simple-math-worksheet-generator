@@ -3,32 +3,25 @@ import {
     FlexWrapOptions, 
     FlexJustifyContentOptions, 
     PaperSize
-} from "./WorksheetPageConstants";
+} from "../components/common/worksheet/WorksheetPageConstants";
 
 import { MathOperators } from "./MathsConstants";
 
-import { TwoNumbersQuestionFormat, TwoNumbersWorksheetSize } from "./TwoNumbersQuestionConstants";
+import { TwoNumbersQuestionFormat, TwoNumbersWorksheetSize } from "../components/two-numbers/TwoNumbersQuestionConstants";
 
-import type { TwoNumbersQuestionWorksheetConfig, TwoNumbersQuestionGeneratorConfig } from "./TwoNumbersQuestionConstants";
+import type { TwoNumbersQuestionWorksheetConfig, TwoNumbersQuestionGeneratorConfig } from "../components/two-numbers/TwoNumbersQuestionConstants";
+
+import { FunMultiplicationWorksheetSize, type FunMultiplicationQuestionWorksheetConfig } from "../components/fun-multiplications/FunMultiplicationConstants";
+
+import { FunMultiplicationQuestionFormat, type FunMultiplicationQuestionGeneratorConfig, type FunMultiplicationWorksheetConfig } from "../components/fun-multiplications/FunMultiplicationConstants";
 
 export const LargeScreenMinWidth: number = 768;
 
 export const QuestionTypes = {
-    TWO_NUMBERS : 'twoNumbers'
+    TWO_NUMBERS : 'twoNumbers',
+    FUN_MULTIPLICATION: 'funMultiplication'
 } as const
 
-
-// export type NumberSequenceQuestionGeneratorConfig = {
-//     start: number;
-//     end: number;
-//     noOfEmptyBoxes: number;
-//     reverse: boolean;
-//     numOfCols: number;
-//     fontSize: string;
-//     cellMinWidth: string;
-//     numberOfQuestions: number;
-//     questionsPerPage: number;
-// }
 
 export type AppPageTopBarFunction = {
     iconButtonName: string;
@@ -37,11 +30,7 @@ export type AppPageTopBarFunction = {
 
 export const AppConstants = {
 
-    // FLEX_DIRECTION_OPTIONS: Object.values(FlexDirectionOptions),
-    // FLEX_WRAP_OPTIONS: Object.values(FlexWrapOptions),
-    // FLEX_JUSTIFY_CONTENT_OPTIONS: Object.values(FlexJustifyContentOptions),
-
-    // WORKSHEET_SIZE_OPTIONS: [PaperSize.A4, PaperSize.A4_LANDSCAPE],
+    DEFAULT_SELECTED_FUNCTION: QuestionTypes.TWO_NUMBERS,
 
     OPERATOR_OPTIONS: Object.values(MathOperators),
 
@@ -131,5 +120,94 @@ export const AppConstants = {
                 contentAlignContent: 'center'
             }
         }
-    }
+    },
+
+    DEFAULT_FUN_MULTIPLICATION_QUESTION_GENERATOR_CONFIG: <FunMultiplicationQuestionGeneratorConfig>{
+        firstNumRange: '1 - 10',
+        firstNumReverse: false,
+        secondNumRange: '1 - 10',
+        secondNumReverse: false,
+        resultMin: 1,
+        resultMax: 100,
+        allowNegative: false,
+        randomOrder: false
+    },
+
+    FUN_MULTIPLICATION_WORKSHEET_DEFAULT_CONFIG: {
+        A4: <FunMultiplicationQuestionWorksheetConfig>{
+            questionConfig: {
+                showFirstNum: false,
+                showSecondNum: false,
+                showAnswers: false,
+                questionFormat: FunMultiplicationQuestionFormat.HORIZONTAL_METHOD,
+                
+            },
+            horizonalMethodStyleConfig: {
+                fontSize: '30px',
+                numberBoxWidth: '12mm',
+                numberBoxHeight: '12mm',
+                numberBoxMargin: '0px 1px 0px 1px',
+                operatorBoxMargin: '0px 1px 0px 1px',
+                questionContainerMargin: '5px 5px 5px 5px',
+            },
+            columnMethodStyleConfig: {
+                showQuestionId: false,
+                questionIdFontSize: '3mm',
+                questionIdWidth: '12mm',
+                questionFontSize: '7mm',
+                questionContainerMargin: '3mm',
+                questionContainerPadding: '2mm',
+                questionRowNumberWidth: '24mm'
+            },
+            worksheetConfig: {
+                worksheetSize: FunMultiplicationWorksheetSize.A4,
+                questionsPerPage: 10
+            },
+            worksheetCointainerStyleConfig: {
+                contentContainerHeight: '276mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.CENTER,
+                contentAlignContent: 'center'
+            }
+        },
+        A4_LANDSCAPE: <FunMultiplicationQuestionWorksheetConfig>{
+            questionConfig: {
+                showFirstNum: false,
+                showSecondNum: false,
+                showAnswers: false,
+                questionFormat: FunMultiplicationQuestionFormat.HORIZONTAL_METHOD,
+            },
+            horizonalMethodStyleConfig: {
+                fontSize: '56px',
+                numberBoxWidth: '19mm',
+                numberBoxHeight: '19mm',
+                numberBoxMargin: '20px 1px 5px 1px',
+                operatorBoxMargin: '20px 1px 5px 1px',
+                questionContainerMargin: '20px 90px 15px 90px',
+            },
+            columnMethodStyleConfig: {
+                showQuestionId: false,
+                questionIdFontSize: '3mm',
+                questionIdWidth: '12mm',
+                questionFontSize: '7mm',
+                questionContainerMargin: '3mm',
+                questionContainerPadding: '2mm',
+                questionRowNumberWidth: '24mm'
+            },
+            worksheetConfig: {
+                worksheetSize: FunMultiplicationWorksheetSize.A4_LANDSCAPE,
+                questionsPerPage: 12
+            },
+            worksheetCointainerStyleConfig: {
+                contentContainerHeight: '200mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.FLEX_START,
+                contentAlignContent: 'center'
+            }
+        }
+    },
 } as const;

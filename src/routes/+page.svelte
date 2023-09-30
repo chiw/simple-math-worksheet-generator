@@ -1,8 +1,10 @@
 <script lang="ts">
-    import { TwoNumbersAppPageContainer } from "$lib/components/two-numbers";
+    // import { TwoNumbersAppPageContainer } from "$lib/components/two-numbers";
+    // import { FunMultiplicationAppPageContainer } from "$lib/components/fun-multiplications";
 </script>
 
-<TwoNumbersAppPageContainer />
+<!-- <TwoNumbersAppPageContainer /> -->
+<!-- <FunMultiplicationAppPageContainer /> -->
 
 <style>    
 </style>
