@@ -60,8 +60,8 @@
 </svelte:head>
 
 
-  <!-- <TopAppBar bind:this="{topAppBar}" variant="fixed" dense > -->
-  <TopAppBar bind:this="{topAppBar}" variant="fixed" >
+  <TopAppBar bind:this="{topAppBar}" variant="fixed" dense >
+  <!-- <TopAppBar bind:this="{topAppBar}" variant="fixed" > -->
     <Row>
       <Section>
         <IconButton class="material-icons" 
