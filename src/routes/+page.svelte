@@ -2,6 +2,7 @@
     
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
+    import { base } from '$app/paths';
 
     import { appSelectedFunctionStore } from "$lib/stores/AppStores";
 
@@ -11,7 +12,7 @@
     onMount(() => {
         console.log('$appSelectedFunctionStore [' +  $appSelectedFunctionStore + ']');
         console.log('getAppFunctionById [' + getAppFunctionById($appSelectedFunctionStore) + ']');
-        goto(getAppFunctionById($appSelectedFunctionStore).route);
+        goto(base + getAppFunctionById($appSelectedFunctionStore).route);
     });
 </script>
 
