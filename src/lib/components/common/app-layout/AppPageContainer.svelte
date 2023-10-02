@@ -68,7 +68,9 @@
           on:click="{toggleDrawer}">menu</IconButton>
         <Title></Title>
 
-        <AppFunctionSelect />
+        {#if screenWidth >= LargeScreenMinWidth}
+          <AppFunctionSelect />
+        {/if}
 
         <slot name="topAppBar" />
       </Section>
@@ -100,6 +102,8 @@
     <AppContent class="app-content">    
         <main class="main-content">
           {#if screenWidth < LargeScreenMinWidth }
+            <AppFunctionSelect />
+
             <div style="margin-left:0.5em" class="nonPrintable" transition:slide>
               <details class="mdc-typography--subtitle1"
                 style="margin-left:0.5em; padding-top:0.5em" bind:open={drawerOpen}>
