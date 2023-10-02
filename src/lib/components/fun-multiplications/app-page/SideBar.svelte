@@ -5,8 +5,9 @@
     // SMUI checkbox
     import FormField from '@smui/form-field';
     import Checkbox from '@smui/checkbox';
-    
-    import { questionGeneratorConfigStore } from '../stores';
+
+    import { questionGeneratorConfigStore } from '../stores';	
+	
 </script>
 
 <div>

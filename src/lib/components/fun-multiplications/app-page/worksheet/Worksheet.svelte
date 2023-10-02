@@ -9,7 +9,7 @@
     
     import { FunMultiplicationQuestionFormat } from "../../FunMultiplicationConstants";
 
-    import { QuestionTypes, AppConstants } from "$lib/constants/AppConstants";
+    import { AppFunction, AppConstants } from "$lib/constants/AppConstants";
     import { MathOperators } from "$lib/constants/MathsConstants";
 		
     export let worksheetPages:any = [];
@@ -37,7 +37,7 @@
 		contentAlignContent='center' >
 
         {#each page as question, questionIndex }
-            {#if question.questionType === QuestionTypes.FUN_MULTIPLICATION}
+            {#if question.questionType === AppFunction.FUN_MULTIPLICATION.id}
                 {#if questionConfig.questionFormat === FunMultiplicationQuestionFormat.HORIZONTAL_METHOD}
                     <QuestionHorizontal 
                         firstNumber={question.num1}

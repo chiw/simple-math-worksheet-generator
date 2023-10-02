@@ -17,10 +17,50 @@ import { FunMultiplicationQuestionFormat, type FunMultiplicationQuestionGenerato
 
 export const LargeScreenMinWidth: number = 768;
 
-export const QuestionTypes = {
-    TWO_NUMBERS : 'twoNumbers',
-    FUN_MULTIPLICATION: 'funMultiplication'
+export type AppFunctionType = {
+    id: string,
+    label: string,
+    route: string
+}
+
+export const AppFunction = {
+    TWO_NUMBERS : <AppFunctionType>{ 
+        id: "twoNumbers", label: "Two numbers",
+        route: "/two-numbers"
+    } ,
+    FUN_MULTIPLICATION: <AppFunctionType>{ 
+        id: "funMultiplication", label: "Fun multiplication 1-10",
+        route: "/fun-multiplications"
+    }
 } as const
+
+export const AppFunctionSelectList: AppFunctionType[] = [
+    AppFunction.TWO_NUMBERS, 
+    AppFunction.FUN_MULTIPLICATION
+];
+
+export const getAppFunctionById = (appFunctionId: string): AppFunctionType => {
+    // let func: AppFunctionType = AppFunctionSelectList.filter((item: AppFunctionType, index: number) => {
+    //     item.id === appFunctionId
+    // }).at(0);
+
+    // if(!func) {
+    //     func = AppFunction.TWO_NUMBERS;
+    // }
+
+    let func: AppFunctionType = undefined;
+    AppFunctionSelectList.forEach((item) => {
+        if(item.id === appFunctionId) {
+            func = item;
+        }
+    })
+
+    if(func === undefined) func = AppFunction.TWO_NUMBERS;
+
+    console.log('getAppFunctionById func=[' + func.id + ']');
+
+    return func;
+}
 
 
 export type AppPageTopBarFunction = {
@@ -30,7 +70,7 @@ export type AppPageTopBarFunction = {
 
 export const AppConstants = {
 
-    DEFAULT_SELECTED_FUNCTION: QuestionTypes.TWO_NUMBERS,
+    DEFAULT_SELECTED_FUNCTION: AppFunction.TWO_NUMBERS.id,
 
     OPERATOR_OPTIONS: Object.values(MathOperators),
 

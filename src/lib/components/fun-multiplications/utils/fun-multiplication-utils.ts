@@ -1,4 +1,4 @@
-import { QuestionTypes, MathOperators } from "../../../constants";
+import { AppFunction, MathOperators } from "../../../constants";
 
 import { operationMap } from "$lib/components/common/utils/math-utils";
 
@@ -62,7 +62,7 @@ const isAnswerWithinRange = (answer: number, allowNegative: boolean, resultMin: 
 
 const createFunMultiplicationQuestion = (num1: number, num2: number, operator: string, answer: number): FunMultiplicationQuestion => {
     return <FunMultiplicationQuestion>{
-        questionType: QuestionTypes.FUN_MULTIPLICATION,
+        questionType: AppFunction.FUN_MULTIPLICATION.id,
         num1: num1,
         num2: num2,
         operator: operator,

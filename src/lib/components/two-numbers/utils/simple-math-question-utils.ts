@@ -1,4 +1,4 @@
-import { QuestionTypes } from '../../../constants';
+import { AppFunction } from '../../../constants';
 import type { WorkSheet, TwoNumbersQuestion, TwoNumbersQuestionGeneratorConfig } from '../TwoNumbersQuestionConstants';
 import { shuffleArray } from '../../common/utils/array-utils';
 import { parseRange } from '../../../utils/number-ranage-parser-utils';
@@ -65,7 +65,7 @@ export class SimpleMathQuestionUtils {
 
     private static createTwoNumbersQuestionType(num1: number, num2: number, operator: string, answer: number): TwoNumbersQuestion {
         return <TwoNumbersQuestion>{
-            questionType: QuestionTypes.TWO_NUMBERS,
+            questionType: AppFunction.TWO_NUMBERS.id,
             num1: num1,
             num2: num2,
             operator: operator,

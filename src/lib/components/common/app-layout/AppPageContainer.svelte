@@ -18,6 +18,9 @@
 
     // theme toggle
     import { appThemeStore } from '$lib/stores';
+
+    // app function select
+    import { AppFunctionSelect } from '../app-controls/function-select';
 		
     let topAppBar: TopAppBarComponentDev;
 
@@ -57,12 +60,16 @@
 </svelte:head>
 
 
-  <TopAppBar bind:this="{topAppBar}" variant="fixed" dense >
+  <!-- <TopAppBar bind:this="{topAppBar}" variant="fixed" dense > -->
+  <TopAppBar bind:this="{topAppBar}" variant="fixed" >
     <Row>
       <Section>
         <IconButton class="material-icons" 
           on:click="{toggleDrawer}">menu</IconButton>
         <Title></Title>
+
+        <AppFunctionSelect />
+
         <slot name="topAppBar" />
       </Section>
       <Section align="end" toolbar>

@@ -1,10 +1,19 @@
 <script lang="ts">
-    // import { TwoNumbersAppPageContainer } from "$lib/components/two-numbers";
-    // import { FunMultiplicationAppPageContainer } from "$lib/components/fun-multiplications";
-</script>
+    
+    import { onMount } from "svelte";
+    import { goto } from "$app/navigation";
 
-<!-- <TwoNumbersAppPageContainer /> -->
-<!-- <FunMultiplicationAppPageContainer /> -->
+    import { appSelectedFunctionStore } from "$lib/stores/AppStores";
+
+    import { getAppFunctionById } from "$lib/constants/AppConstants";
+    
+
+    onMount(() => {
+        console.log('$appSelectedFunctionStore [' +  $appSelectedFunctionStore + ']');
+        console.log('getAppFunctionById [' + getAppFunctionById($appSelectedFunctionStore) + ']');
+        goto(getAppFunctionById($appSelectedFunctionStore).route);
+    });
+</script>
 
 <style>    
 </style>

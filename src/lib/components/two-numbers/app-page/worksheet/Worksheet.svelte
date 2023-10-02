@@ -8,7 +8,7 @@
 	
     import type { TwoNumbersQuestionWorksheetConfig } from "$lib/components/two-numbers/TwoNumbersQuestionConstants";    
     import { TwoNumbersQuestionFormat } from "$lib/components/two-numbers/TwoNumbersQuestionConstants";
-    import { QuestionTypes, AppConstants } from "$lib/constants/AppConstants";
+    import { AppFunction, AppConstants } from "$lib/constants/AppConstants";
     import { MathOperators } from "$lib/constants/MathsConstants";
 		
     export let worksheetPages:any = [];
@@ -35,7 +35,7 @@
 		contentAlignContent='center' >
 
         {#each page as question, questionIndex }
-            {#if question.questionType === QuestionTypes.TWO_NUMBERS}
+            {#if question.questionType === AppFunction.TWO_NUMBERS.id}
                 {#if questionConfig.questionFormat === TwoNumbersQuestionFormat.HORIZONTAL_METHOD}
                     <QuestionHorizontal 
                         firstNumber={question.num1}
