@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';    
     import { goto } from '$app/navigation';
     import { base } from '$app/paths';
+    import { page } from '$app/stores';
 
     import { appSelectedFunctionStore } from '$lib/stores/AppStores';
 
@@ -18,7 +19,7 @@
    
 
     // SMUI Chip 
-    import Chip, { Set, Text as ChipText } from '@smui/chips';
+    import Chip, { Set, Text as ChipText, TrailingIcon } from '@smui/chips';
 
     // SMUI Touch target wrapper
     import Wrapper from '@smui/touch-target';
@@ -78,6 +79,7 @@
             <Set chips={[selectedFunction.label]} let:chip style="display: inline-flex;">
                 <Chip {chip} on:click={() => menu.setOpen(true)}>
                     <ChipText tabIndex={0}>{chip}</ChipText>
+                    <TrailingIcon class="material-icons">unfold_more</TrailingIcon>
                 </Chip>
             </Set>
         </Wrapper>

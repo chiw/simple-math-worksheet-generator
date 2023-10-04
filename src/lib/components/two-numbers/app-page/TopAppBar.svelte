@@ -30,8 +30,8 @@
 </script>
 
 <Wrapper>
-  <IconButton class="material-icons" on:click="{generateWorksheet}">play_circle</IconButton>
-  <Tooltip>Generate worksheet</Tooltip>
+  <IconButton class="material-icons" on:click="{generateWorksheet}" title="Generate worksheet">play_circle</IconButton>
+  <!-- <Tooltip>Generate worksheet</Tooltip> -->
 </Wrapper>
 
 {#if $worksheetDataCountStore > 0}
