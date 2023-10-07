@@ -176,7 +176,7 @@ export const AppConstants = {
     FUN_MULTIPLICATION_WORKSHEET_DEFAULT_CONFIG: {
         A4: <FunMultiplicationQuestionWorksheetConfig>{
             questionConfig: {
-                showFirstNum: false,
+                showFirstNum: true,
                 showSecondNum: false,
                 showAnswers: false,
                 questionFormat: FunMultiplicationQuestionFormat.HORIZONTAL_METHOD,
@@ -214,7 +214,7 @@ export const AppConstants = {
         },
         A4_LANDSCAPE: <FunMultiplicationQuestionWorksheetConfig>{
             questionConfig: {
-                showFirstNum: false,
+                showFirstNum: true,
                 showSecondNum: false,
                 showAnswers: false,
                 questionFormat: FunMultiplicationQuestionFormat.HORIZONTAL_METHOD,

@@ -41,9 +41,12 @@
                 {#if questionConfig.questionFormat === FunMultiplicationQuestionFormat.HORIZONTAL_METHOD}
                     <QuestionHorizontal 
                         firstNumber={question.num1}
+                        showFirstNumber={questionConfig.showFirstNum}
 						secondNumber={question.num2}
+                        showSecondNumber={questionConfig.showSecondNum}
 						operator={question.operator}
-                        answer={questionConfig.showAnswers ? question.answer : ''}
+                        answer={question.answer}
+                        showAnswer={questionConfig.showAnswers}
 						
                         width={horizonalMethodStyleConfig.numberBoxWidth}
 						height={horizonalMethodStyleConfig.numberBoxHeight}

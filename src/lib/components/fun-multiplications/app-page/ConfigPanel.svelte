@@ -104,11 +104,21 @@
                     <Option value={choice}>{choice}</Option>
                 {/each}
             </Select> -->
+            
+            <FormField>
+                <Switch bind:checked={$questionConfigStore.showFirstNum} />
+                <span slot="label">Show 1st number</span>
+            </FormField>
 
+            <FormField>
+                <Switch bind:checked={$questionConfigStore.showSecondNum} />
+                <span slot="label">Show 2nd number</span>
+            </FormField>
+        
             <FormField>
                 <Switch bind:checked={$questionConfigStore.showAnswers} />
                 <span slot="label">Show answers</span>
-            </FormField>        
+            </FormField>
         </details>
     
         <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={layoutSettingsOpen}>

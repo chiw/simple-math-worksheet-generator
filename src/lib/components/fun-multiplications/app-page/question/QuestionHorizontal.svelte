@@ -15,9 +15,12 @@
 	export let height = '300px';
 	export let fontSize = '15px';
 	export let firstNumber = '1';
+	export let showFirstNumber: boolean = true;
 	export let secondNumber = '1';
+	export let showSecondNumber: boolean = true;
 	export let operator = '';
 	export let answer = '';
+	export let showAnswer: boolean = false;
 
 	export let numberBoxMargin = '0';
 	export let operatorBoxMargin = '0';
@@ -91,18 +94,18 @@
 	</div>
 
 	<div class="questionContainer" style="--fontSize:{fontSize};--questionContainerMargin:{questionContainerMargin}">
-		<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">
-			{firstNumber}
+		<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">			
+			{showFirstNumber ? firstNumber : ''}
 		</div>
 		<div class="operatorBox" style="--height:{height};--operatorBoxMargin:{operatorBoxMargin}">
 			{@html operator}
 		</div>
 		<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">
-			{secondNumber}
+			{showSecondNumber ? secondNumber : ''}
 		</div>
 		<div class="operatorBox" style="--height:{height};--operatorBoxMargin:{operatorBoxMargin}">=</div>
 		<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">
-			{answer}
+			{showAnswer ? answer : ''}
 		</div>
 	</div>
 </div>

@@ -16,7 +16,6 @@
     let menu: Menu;
     let anchor: HTMLDivElement;
     let anchorClasses: { [k: string]: boolean } = {};
-   
 
     // SMUI Chip 
     import Chip, { Set, Text as ChipText, TrailingIcon } from '@smui/chips';
