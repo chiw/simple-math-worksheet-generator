@@ -11,6 +11,10 @@ import { TwoNumbersQuestionFormat, TwoNumbersWorksheetSize } from "../components
 
 import type { TwoNumbersQuestionWorksheetConfig, TwoNumbersQuestionGeneratorConfig } from "../components/two-numbers/TwoNumbersQuestionConstants";
 
+import { ThreeNumbersQuestionFormat, ThreeNumbersWorksheetSize } from "../components/three-numbers/ThreeNumbersQuestionConstants";
+
+import type { ThreeNumbersQuestionWorksheetConfig, ThreeNumbersQuestionGeneratorConfig } from "../components/three-numbers/ThreeNumbersQuestionConstants";
+
 import { FunMultiplicationWorksheetSize, type FunMultiplicationQuestionWorksheetConfig } from "../components/fun-multiplications/FunMultiplicationConstants";
 
 import { FunMultiplicationQuestionFormat, type FunMultiplicationQuestionGeneratorConfig, type FunMultiplicationWorksheetConfig } from "../components/fun-multiplications/FunMultiplicationConstants";
@@ -25,17 +29,25 @@ export type AppFunctionType = {
 
 export const AppFunction = {
     TWO_NUMBERS : <AppFunctionType>{ 
-        id: "twoNumbers", label: "Two numbers",
+        id: "twoNumbers", 
+        label: "Two numbers",
         route: "/two-numbers"
-    } ,
+    },
+    THREE_NUMBERS : <AppFunctionType>{
+        id: "threeNumbers", 
+        label: "Three numbers",
+        route: "/three-numbers"
+    },
     FUN_MULTIPLICATION: <AppFunctionType>{ 
-        id: "funMultiplication", label: "Fun multiplication 1-10",
+        id: "funMultiplication", 
+        label: "Fun multiplication 1-10",
         route: "/fun-multiplications"
     }
 } as const
 
 export const AppFunctionSelectList: AppFunctionType[] = [
-    AppFunction.TWO_NUMBERS, 
+    AppFunction.TWO_NUMBERS,
+    AppFunction.THREE_NUMBERS,
     AppFunction.FUN_MULTIPLICATION
 ];
 
@@ -149,6 +161,94 @@ export const AppConstants = {
             },
             worksheetConfig: {
                 worksheetSize: TwoNumbersWorksheetSize.A4_LANDSCAPE,
+                questionsPerPage: 12
+            },
+            worksheetCointainerStyleConfig: {
+                contentContainerHeight: '200mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.FLEX_START,
+                contentAlignContent: 'center'
+            }
+        }
+    },
+
+    DEFAULT_THREE_NUMBERS_QUESTION_GENERATOR_CONFIG: <ThreeNumbersQuestionGeneratorConfig>{
+        firstNumRange: '2 - 15',
+        firstNumReverse: true,
+        secondNumRange: '1 - 10',
+        secondNumReverse: true,
+        thirdNumRange: '1 - 10',
+        thirdNumReverse: true,
+        resultMin: 0,
+        resultMax: 20,
+        allowNegative: false,
+        allowRemainder: false,
+        randomOrder: true,
+        questionOperator: [MathOperators.PLUS, MathOperators.MINUS],
+    },
+
+    THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG: {
+        A4: <ThreeNumbersQuestionWorksheetConfig>{
+            questionConfig: {
+                questionFormat: ThreeNumbersQuestionFormat.HORIZONTAL_METHOD,
+                showAnswers: false
+            },
+            horizonalMethodStyleConfig: {
+                fontSize: '25px',
+                numberBoxWidth: '16mm',
+                numberBoxHeight: '16mm',
+                numberBoxMargin: '20px 1px 5px 1px',
+                operatorBoxMargin: '20px 1px 5px 1px',
+                questionContainerMargin: '10px 30px 10px 30px',
+            },
+            columnMethodStyleConfig: {
+                showQuestionId: false,
+                questionIdFontSize: '3mm',
+                questionIdWidth: '12mm',
+                questionFontSize: '7mm',
+                questionContainerMargin: '3mm',
+                questionContainerPadding: '2mm',
+                questionRowNumberWidth: '24mm'
+            },
+            worksheetConfig: {
+                worksheetSize: ThreeNumbersWorksheetSize.A4,
+                questionsPerPage: 20
+            },
+            worksheetCointainerStyleConfig: {
+                contentContainerHeight: '276mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.FLEX_START,
+                contentAlignContent: 'center'
+            }
+        },
+        A4_LANDSCAPE: <ThreeNumbersQuestionWorksheetConfig>{
+            questionConfig: {
+                questionFormat: TwoNumbersQuestionFormat.HORIZONTAL_METHOD,
+                showAnswers: false
+            },
+            horizonalMethodStyleConfig: {
+                fontSize: '25px',
+                numberBoxWidth: '16mm',
+                numberBoxHeight: '16mm',
+                numberBoxMargin: '20px 1px 5px 1px',
+                operatorBoxMargin: '20px 1px 5px 1px',
+                questionContainerMargin: '20px 90px 15px 90px',
+            },
+            columnMethodStyleConfig: {
+                showQuestionId: false,
+                questionIdFontSize: '3mm',
+                questionIdWidth: '12mm',
+                questionFontSize: '7mm',
+                questionContainerMargin: '3mm',
+                questionContainerPadding: '2mm',
+                questionRowNumberWidth: '24mm'
+            },
+            worksheetConfig: {
+                worksheetSize: ThreeNumbersWorksheetSize.A4_LANDSCAPE,
                 questionsPerPage: 12
             },
             worksheetCointainerStyleConfig: {
