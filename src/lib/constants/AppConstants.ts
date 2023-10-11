@@ -1,23 +1,39 @@
 import { 
     FlexDirectionOptions, 
     FlexWrapOptions, 
-    FlexJustifyContentOptions, 
-    PaperSize
+    FlexJustifyContentOptions
 } from "../components/common/worksheet/WorksheetPageConstants";
 
 import { MathOperators } from "./MathsConstants";
 
-import { TwoNumbersQuestionFormat, TwoNumbersWorksheetSize } from "../components/two-numbers/TwoNumbersQuestionConstants";
+import { 
+    TwoNumbersQuestionFormat, 
+    TwoNumbersWorksheetSize, 
+    type TwoNumbersQuestionWorksheetConfig, 
+    type TwoNumbersQuestionGeneratorConfig 
+} from "../components/two-numbers/TwoNumbersQuestionConstants";
 
-import type { TwoNumbersQuestionWorksheetConfig, TwoNumbersQuestionGeneratorConfig } from "../components/two-numbers/TwoNumbersQuestionConstants";
+import { 
+    ThreeNumbersQuestionFormat, 
+    ThreeNumbersWorksheetSize, 
+    type ThreeNumbersQuestionWorksheetConfig, 
+    type ThreeNumbersQuestionGeneratorConfig 
+} from "../components/three-numbers/ThreeNumbersQuestionConstants";
 
-import { ThreeNumbersQuestionFormat, ThreeNumbersWorksheetSize } from "../components/three-numbers/ThreeNumbersQuestionConstants";
+import { 
+    type FunMultiplicationQuestionGeneratorConfig,
+    type FunMultiplicationQuestionWorksheetConfig,
+    FunMultiplicationQuestionFormat, 
+    FunMultiplicationWorksheetSize
+} from "../components/fun-multiplications/FunMultiplicationConstants";
 
-import type { ThreeNumbersQuestionWorksheetConfig, ThreeNumbersQuestionGeneratorConfig } from "../components/three-numbers/ThreeNumbersQuestionConstants";
-
-import { FunMultiplicationWorksheetSize, type FunMultiplicationQuestionWorksheetConfig } from "../components/fun-multiplications/FunMultiplicationConstants";
-
-import { FunMultiplicationQuestionFormat, type FunMultiplicationQuestionGeneratorConfig, type FunMultiplicationWorksheetConfig } from "../components/fun-multiplications/FunMultiplicationConstants";
+import {
+    type FunAlgebraQuestionGeneratorConfig,
+    type FunAlgebraQuestionWorksheetConfig,
+    FunAlgebraQuestionFormat,
+    FunAlgebraWorksheetSize,
+    FunAlgebraQuestionType
+} from "../components/fun-algebra/FunAlgebraConstants";
 
 export const LargeScreenMinWidth: number = 768;
 
@@ -42,13 +58,19 @@ export const AppFunction = {
         id: "funMultiplication", 
         label: "Fun multiplication 1-10",
         route: "/fun-multiplications"
+    },
+    FUN_ALGEBRA: <AppFunctionType>{
+        id: "funAlgebra",
+        label: "Fun algebra",
+        route: "/fun-algebra"
     }
 } as const
 
 export const AppFunctionSelectList: AppFunctionType[] = [
     AppFunction.TWO_NUMBERS,
     AppFunction.THREE_NUMBERS,
-    AppFunction.FUN_MULTIPLICATION
+    AppFunction.FUN_MULTIPLICATION,
+    AppFunction.FUN_ALGEBRA
 ];
 
 export const getAppFunctionById = (appFunctionId: string): AppFunctionType => {
@@ -338,6 +360,100 @@ export const AppConstants = {
             },
             worksheetConfig: {
                 worksheetSize: FunMultiplicationWorksheetSize.A4_LANDSCAPE,
+                questionsPerPage: 12
+            },
+            worksheetCointainerStyleConfig: {
+                contentContainerHeight: '200mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.FLEX_START,
+                contentAlignContent: 'center'
+            }
+        }
+    },
+
+    DEFAULT_FUN_ALGEBRA_QUESTION_GENERATOR_CONFIG: <FunAlgebraQuestionGeneratorConfig>{
+        numA: 1,
+        ratioBToA: '1-3', /* expected 1-3 for kid level */
+        ratioCToB: '1-3', /* expected 1-3 for kid level */
+        resultMax: 9,
+        randomOrder: true,
+        questionTypes: [FunAlgebraQuestionType.BASIC_LVL_1],
+
+        firstNumRange: '1 - 10',
+        firstNumReverse: false,
+        secondNumRange: '1 - 10',
+        secondNumReverse: false,
+        resultMin: 1,
+        allowNegative: false
+    },
+
+    FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG: {
+        A4: <FunAlgebraQuestionWorksheetConfig>{
+            questionConfig: {
+                showFirstNum: true,
+                showSecondNum: false,
+                showAnswers: false,
+                questionFormat: FunAlgebraQuestionFormat.HORIZONTAL_METHOD,
+
+            },
+            horizonalMethodStyleConfig: {
+                fontSize: '30px',
+                numberBoxWidth: '12mm',
+                numberBoxHeight: '12mm',
+                numberBoxMargin: '0px 1px 0px 1px',
+                operatorBoxMargin: '0px 1px 0px 1px',
+                questionContainerMargin: '5px 5px 5px 5px',
+            },
+            columnMethodStyleConfig: {
+                showQuestionId: false,
+                questionIdFontSize: '3mm',
+                questionIdWidth: '12mm',
+                questionFontSize: '7mm',
+                questionContainerMargin: '3mm',
+                questionContainerPadding: '2mm',
+                questionRowNumberWidth: '24mm'
+            },
+            worksheetConfig: {
+                worksheetSize: FunAlgebraWorksheetSize.A4,
+                questionsPerPage: 4
+            },
+            worksheetCointainerStyleConfig: {
+                contentContainerHeight: '276mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.CENTER,
+                contentAlignContent: 'center'
+            }
+        },
+        A4_LANDSCAPE: <FunAlgebraQuestionWorksheetConfig>{
+            questionConfig: {
+                showFirstNum: true,
+                showSecondNum: false,
+                showAnswers: false,
+                questionFormat: FunAlgebraQuestionFormat.HORIZONTAL_METHOD,
+            },
+            horizonalMethodStyleConfig: {
+                fontSize: '56px',
+                numberBoxWidth: '19mm',
+                numberBoxHeight: '19mm',
+                numberBoxMargin: '20px 1px 5px 1px',
+                operatorBoxMargin: '20px 1px 5px 1px',
+                questionContainerMargin: '20px 90px 15px 90px',
+            },
+            columnMethodStyleConfig: {
+                showQuestionId: false,
+                questionIdFontSize: '3mm',
+                questionIdWidth: '12mm',
+                questionFontSize: '7mm',
+                questionContainerMargin: '3mm',
+                questionContainerPadding: '2mm',
+                questionRowNumberWidth: '24mm'
+            },
+            worksheetConfig: {
+                worksheetSize: FunAlgebraWorksheetSize.A4_LANDSCAPE,
                 questionsPerPage: 12
             },
             worksheetCointainerStyleConfig: {

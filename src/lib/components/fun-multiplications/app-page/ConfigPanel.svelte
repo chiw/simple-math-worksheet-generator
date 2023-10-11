@@ -36,21 +36,12 @@
         worksheetDataCountStore
     } from '../stores';
 
+    import { getWorksheetMsg } from '$lib/components/common/worksheet';
+
     let selectedWorksheetSize = FunMultiplicationWorksheetSize.A4;
 
     let totalPages: number = 0;
     let worksheetMsg: string = '';
-
-    let getWorksheetMsg = (numOfQuestions: number, totalPages: number): string => {
-        if(totalPages == 0) { return ''; }
-        return "Total ".concat(String(numOfQuestions))
-            .concat((numOfQuestions > 1) ? ' questions' : ' question')
-            .concat(' (')
-            .concat(String(totalPages)
-            .concat((totalPages > 1) ? ' pages' : ' page')
-            ).concat(') ')
-            .concat('are generated.');
-    }
 
     $: {
         console.log(`selectedWorksheetSize is ${selectedWorksheetSize}`);

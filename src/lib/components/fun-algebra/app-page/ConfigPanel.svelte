@@ -20,25 +20,25 @@
     import { FLEX_DIRECTION_OPTIONS, FLEX_WRAP_OPTIONS, FLEX_JUSTIFY_CONTENT_OPTIONS, PaperSize } from '../../common/worksheet/WorksheetPageConstants';
 
     import { 
-        ThreeNumbersQuestionFormat, THREE_NUMBERS_QUESTION_FORMAT, 
-        ThreeNumbersWorksheetSize, THREE_NUMBERS_WORKSHEET_SIZE
-    } from "../ThreeNumbersQuestionConstants";
+        FunAlgebraQuestionFormat, FUN_ALGEBRA_QUESTION_FORMAT, 
+        FunAlgebraWorksheetSize, FUN_ALGEBRA_WORKSHEET_SIZE
+    } from '../FunAlgebraConstants';
 
     import { AppConstants } from '$lib/constants/AppConstants';
 
-    // import stores   
     import { 
         questionConfigStore,
         horizontalMethodStyleConfigStore,
         columnMethodStyleConfigStore,
         worksheetConfigStore,
-        worksheetContainerStyleConfig,
+        worksheetContainerStyleConfigStore,
+        
         worksheetDataCountStore
-    } from "../stores";
+    } from '../stores';
 
     import { getWorksheetMsg } from '$lib/components/common/worksheet';
 
-    let selectedWorksheetSize = ThreeNumbersWorksheetSize.A4;
+    let selectedWorksheetSize = FunAlgebraWorksheetSize.A4;
 
     let totalPages: number = 0;
     let worksheetMsg: string = '';
@@ -47,20 +47,20 @@
         console.log(`selectedWorksheetSize is ${selectedWorksheetSize}`);
         worksheetConfigStore.worksheetSize = selectedWorksheetSize;
 
-        if(selectedWorksheetSize === ThreeNumbersWorksheetSize.A4) {
+        if(selectedWorksheetSize === FunAlgebraWorksheetSize.A4) {
             console.log("set stores with A4 default config");
-            questionConfigStore.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4.questionConfig);
-            horizontalMethodStyleConfigStore.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4.horizonalMethodStyleConfig);
-            columnMethodStyleConfigStore.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4.columnMethodStyleConfig);
-            worksheetConfigStore.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4.worksheetConfig);
-            worksheetContainerStyleConfig.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4.worksheetCointainerStyleConfig);
+            questionConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.questionConfig);
+            horizontalMethodStyleConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.horizonalMethodStyleConfig);
+            columnMethodStyleConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.columnMethodStyleConfig);
+            worksheetConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.worksheetConfig);
+            worksheetContainerStyleConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.worksheetCointainerStyleConfig);
         } else {
             console.log("set stores with A4_LANDSCAPE default config");
-            questionConfigStore.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.questionConfig);
-            horizontalMethodStyleConfigStore.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.horizonalMethodStyleConfig);
-            columnMethodStyleConfigStore.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.columnMethodStyleConfig);
-            worksheetConfigStore.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.worksheetConfig);
-            worksheetContainerStyleConfig.set(AppConstants.THREE_NUMBERS_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.worksheetCointainerStyleConfig);
+            questionConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.questionConfig);
+            horizontalMethodStyleConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.horizonalMethodStyleConfig);
+            columnMethodStyleConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.columnMethodStyleConfig);
+            worksheetConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.worksheetConfig);
+            worksheetContainerStyleConfigStore.set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4_LANDSCAPE.worksheetCointainerStyleConfig);
         }
 
         totalPages = Math.ceil($worksheetDataCountStore / $worksheetConfigStore.questionsPerPage);
@@ -70,7 +70,7 @@
     let basicSettingsOpen:boolean = true;
     let layoutSettingsOpen:boolean = false;
 
-    let screenWidth;
+    let screenWidth: number;
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -81,49 +81,49 @@
         <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={basicSettingsOpen}>
             <summary>Basic Settings</summary>
 
-            <Set chips={THREE_NUMBERS_WORKSHEET_SIZE} let:chip choice bind:selected={selectedWorksheetSize}>
+            <!-- <Set chips={FUN_ALGEBRA_WORKSHEET_SIZE} let:chip choice bind:selected={selectedWorksheetSize}>
                 <Chip {chip}>
                     <ChipText>{chip}</ChipText>
                 </Chip>
-            </Set>
+            </Set> -->
 
             <Textfield bind:value={$worksheetConfigStore.questionsPerPage} label="Questions per page" type="number" />
             
             <!-- <Select bind:value={$questionConfigStore.questionFormat} label="Question format">
                 <Option value="" />
-                {#each THREE_NUMBERS_QUESTION_FORMAT as choice}
+                {#each FUN_ALGEBRA_QUESTION_FORMAT as choice}
                     <Option value={choice}>{choice}</Option>
                 {/each}
             </Select> -->
-
+                    
             <FormField>
                 <Switch bind:checked={$questionConfigStore.showAnswers} />
                 <span slot="label">Show answers</span>
-            </FormField>        
+            </FormField>
         </details>
     
         <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={layoutSettingsOpen}>
             <summary>Page Layout Settings</summary>
 
             <div>
-                <Textfield bind:value={$worksheetContainerStyleConfig.pagePadding} label="Page padding" />
-                <Textfield bind:value={$worksheetContainerStyleConfig.contentContainerHeight} label="Page container height" />
+                <Textfield bind:value={$worksheetContainerStyleConfigStore.pagePadding} label="Page padding" />
+                <Textfield bind:value={$worksheetContainerStyleConfigStore.contentContainerHeight} label="Page container height" />
 
-                <Select bind:value={$worksheetContainerStyleConfig.flexDirection} label="Flex direction">
+                <Select bind:value={$worksheetContainerStyleConfigStore.flexDirection} label="Flex direction">
                     <Option value="" />
                     {#each FLEX_DIRECTION_OPTIONS as choice}
                         <Option value={choice}>{choice}</Option>
                     {/each}                                
                 </Select>
                 
-                <Select bind:value={$worksheetContainerStyleConfig.flexWrap} label="Flex wrap">
+                <Select bind:value={$worksheetContainerStyleConfigStore.flexWrap} label="Flex wrap">
                     <Option value="" />
                     {#each FLEX_WRAP_OPTIONS as choice}
                         <Option value={choice}>{choice}</Option>
                     {/each}                                
                 </Select>
 
-                <Select bind:value={$worksheetContainerStyleConfig.flexJustifyContent} label="Flex justify content">
+                <Select bind:value={$worksheetContainerStyleConfigStore.flexJustifyContent} label="Flex justify content">
                     <Option value="" />
                     {#each FLEX_JUSTIFY_CONTENT_OPTIONS as choice}
                         <Option value={choice}>{choice}</Option>
@@ -131,7 +131,7 @@
                 </Select>                            
             </div>
 
-            {#if $questionConfigStore.questionFormat === ThreeNumbersQuestionFormat.HORIZONTAL_METHOD}
+            <!-- {#if $questionConfigStore.questionFormat === FunAlgebraQuestionFormat.HORIZONTAL_METHOD}
                 <div>
                     <Textfield bind:value={$horizontalMethodStyleConfigStore.fontSize} label="QuestionFontSize" />
                     <Textfield bind:value={$horizontalMethodStyleConfigStore.numberBoxWidth} label="Number box width" />
@@ -140,8 +140,8 @@
                     <Textfield bind:value={$horizontalMethodStyleConfigStore.operatorBoxMargin} label="Question operation box margin" />
                     <Textfield bind:value={$horizontalMethodStyleConfigStore.questionContainerMargin} label="Question container margin" />
                 </div>
-            {:else if $questionConfigStore.questionFormat === ThreeNumbersQuestionFormat.COLUMN_METHOD}
-                <div>                    
+            {:else if $questionConfigStore.questionFormat === FunAlgebraQuestionFormat.COLUMN_METHOD}
+                <div>
                     <Textfield bind:value={$columnMethodStyleConfigStore.questionIdFontSize} label="Question ID font size" />
                     <Textfield bind:value={$columnMethodStyleConfigStore.questionIdWidth} label="Question ID width" />
                     <Textfield bind:value={$columnMethodStyleConfigStore.questionFontSize} label="Question font size" />
@@ -153,7 +153,7 @@
                         <span slot="label">Show question ID</span>
                     </FormField>
                 </div>
-            {/if}
+            {/if} -->
         </details>
 
         <p class="mdc-typography--body2">{worksheetMsg}</p>

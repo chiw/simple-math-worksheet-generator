@@ -1,15 +1,15 @@
 <script lang="ts">
 	// number blocks cartoon PNG img
-	import numberBlocks_01 from "$lib/images/numberBlocks_01.png";
-	import numberBlocks_02 from "$lib/images/numberBlocks_02.png";
-	import numberBlocks_03 from "$lib/images/numberBlocks_03.png";
-	import numberBlocks_04 from "$lib/images/numberBlocks_04.png";
-	import numberBlocks_05 from "$lib/images/numberBlocks_05.png";
-	import numberBlocks_06 from "$lib/images/numberBlocks_06.png";
-	import numberBlocks_07 from "$lib/images/numberBlocks_07.png";
-	import numberBlocks_08 from "$lib/images/numberBlocks_08.png";
-	import numberBlocks_09 from "$lib/images/numberBlocks_09.png";
-	import numberBlocks_10 from "$lib/images/numberBlocks_10.png";
+	import numberBlocks_01 from "$lib/images/numberblocks/numberBlocks_01.png";
+	import numberBlocks_02 from "$lib/images/numberblocks/numberBlocks_02.png";
+	import numberBlocks_03 from "$lib/images/numberblocks/numberBlocks_03.png";
+	import numberBlocks_04 from "$lib/images/numberblocks/numberBlocks_04.png";
+	import numberBlocks_05 from "$lib/images/numberblocks/numberBlocks_05.png";
+	import numberBlocks_06 from "$lib/images/numberblocks/numberBlocks_06.png";
+	import numberBlocks_07 from "$lib/images/numberblocks/numberBlocks_07.png";
+	import numberBlocks_08 from "$lib/images/numberblocks/numberBlocks_08.png";
+	import numberBlocks_09 from "$lib/images/numberblocks/numberBlocks_09.png";
+	import numberBlocks_10 from "$lib/images/numberblocks/numberBlocks_10.png";
 	
 	export let width = '300px';
 	export let height = '300px';
