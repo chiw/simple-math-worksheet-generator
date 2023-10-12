@@ -1,7 +1,8 @@
 <script lang="ts">
     
-    import { fruitImgs } from "$lib/components/common/utils/image-utils";
+    import { getImageByCategory } from "$lib/components/common/utils/image-utils";
     
+    export let imgCategory: string = 'fruits';
 
     export let leftNum: number = 1;        
     export let leftImgIndex = 1;
@@ -21,7 +22,6 @@
     export let numberBoxHeight: string = '14mm';
     export let numberBoxWidth: string = '14mm';
     export let numberBoxMargin: string = '5px';
-
 </script>
 
 <div class="pictureAlgebraRowContainer">    
@@ -34,7 +34,7 @@
 
     <div class="pictureAlgebraLeftSection">
         {#each Array(leftNum) as _, index (index)}            
-            <img src={fruitImgs[leftImgIndex]} alt={fruitImgs[leftImgIndex]} class="fruitsImg"/>
+            <img src={ getImageByCategory(imgCategory, leftImgIndex) } alt={getImageByCategory(imgCategory, leftImgIndex)} class={imgCategory} />
         {/each}
     </div>
 
@@ -48,7 +48,7 @@
 
     <div class="pictureAlgebraRightSection">
         {#each Array(rightNum) as _, index (index)}            
-            <img src={fruitImgs[rightImgIndex]} alt={fruitImgs[rightImgIndex]} class="fruitsImg"/>
+            <img src={ getImageByCategory(imgCategory, rightImgIndex) } alt={ getImageByCategory(imgCategory, rightImgIndex) } class={imgCategory} />
         {/each}
     </div>
 </div>
@@ -93,7 +93,11 @@
         justify-content: center;
 	}
 
-    img.fruitsImg {
+    img.fruits {
+        height: 11mm;
+    }
+
+    img.mcdonalds {
         height: 11mm;
     }
 </style>

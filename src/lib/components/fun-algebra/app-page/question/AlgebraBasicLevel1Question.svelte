@@ -1,7 +1,7 @@
 <script lang="ts">
     import PictureAlgebraRow from "./PictureAlgebraRow.svelte";
 
-    import { getRandomFruitImgIndex } from "$lib/components/common/utils/image-utils";
+    import { getRandomCategory, getRandomIndexByCategory } from "$lib/components/common/utils/image-utils";
 
     export let questionNo:number = 1;
 
@@ -17,21 +17,26 @@
 
     let answer = cNum;
 
-    let aNumImgIndex = getRandomFruitImgIndex();
-    let bNumImgIndex = getRandomFruitImgIndex();
-    let cNumImgIndex = getRandomFruitImgIndex();
 
-    while(bNumImgIndex === aNumImgIndex) {
-        bNumImgIndex = getRandomFruitImgIndex();
+    let imgCategory = getRandomCategory();
+    
+    let aNumImgIndex = getRandomIndexByCategory(imgCategory);
+    let bNumImgIndex = getRandomIndexByCategory(imgCategory);
+    let cNumImgIndex = getRandomIndexByCategory(imgCategory);
+
+    while(bNumImgIndex === aNumImgIndex) {        
+        bNumImgIndex = getRandomIndexByCategory(imgCategory);
     }
+
 
     while (cNumImgIndex === aNumImgIndex || cNumImgIndex === bNumImgIndex) {
-        cNumImgIndex = getRandomFruitImgIndex();
+        cNumImgIndex = getRandomIndexByCategory(imgCategory);
     }
 
+    // console.log('imgCategory =', imgCategory);
     // console.log('aNumImgIndex = [', aNumImgIndex , ']');
     // console.log('bNumImgIndex = [', bNumImgIndex , ']');
-    // console.log('cNumImgIndex = [', cNumImgIndex , ']');    
+    // console.log('cNumImgIndex = [', cNumImgIndex , ']');
 
     let width: string = "85mm";
     let height: string = "100mm";
@@ -45,17 +50,20 @@
     <div class="questionNo">{questionNo}.</div>
 
     <!-- show c = (m) b -->
-    <PictureAlgebraRow 
+    <PictureAlgebraRow
+        imgCategory = {imgCategory}
         leftNum={1} leftImgIndex="{cNumImgIndex}" showLeftBox={false}
         rightNum={ratioCToB} rightImgIndex="{bNumImgIndex}" showRightBox={false}
         />
     <!-- show b = (n) a -->
     <PictureAlgebraRow 
+        imgCategory = {imgCategory}
         leftNum={1} leftImgIndex="{bNumImgIndex}" showLeftBox={false}
         rightNum={ratioBToA} rightImgIndex="{aNumImgIndex}" showRightBox={false}
         />
     <!-- show c = (answer) a -->
     <PictureAlgebraRow 
+        imgCategory = {imgCategory}
         leftNum={1} leftImgIndex="{cNumImgIndex}" showLeftBox={false}
         rightNum={aNum} rightImgIndex="{aNumImgIndex}" showRightBox={true}
         rightBoxAnswer={answer}
