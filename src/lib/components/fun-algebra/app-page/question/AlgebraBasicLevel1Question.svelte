@@ -14,9 +14,7 @@
     export let cNum: number = 6;
 
     export let showAnswer: boolean = false;
-
-    let answer = cNum;
-
+    
 
     let imgCategory = getRandomCategory();
     
@@ -66,7 +64,7 @@
         imgCategory = {imgCategory}
         leftNum={1} leftImgIndex="{cNumImgIndex}" showLeftBox={false}
         rightNum={aNum} rightImgIndex="{aNumImgIndex}" showRightBox={true}
-        rightBoxAnswer={answer}
+        rightBoxAnswer={cNum}
         showRightBoxAnswer={showAnswer}
         />
 
