@@ -171,12 +171,12 @@ export const AppConstants = {
                 showAnswers: false
             },            
             horizonalMethodStyleConfig: {
-                fontSize: '40px',
-                numberBoxWidth: '17mm',
-                numberBoxHeight: '17mm',
+                fontSize: '30px',
+                numberBoxWidth: '15mm',
+                numberBoxHeight: '15mm',
                 numberBoxMargin: '10px 1px 5px 1px',
                 operatorBoxMargin: '10px 1px 5px 1px',
-                questionContainerMargin: '20px 90px 15px 90px',
+                questionContainerMargin: '10px 50px 15px 50px',
             },
             columnMethodStyleConfig: {
                 showQuestionId: false,
@@ -189,7 +189,7 @@ export const AppConstants = {
             },
             worksheetConfig: {
                 worksheetSize: TwoNumbersWorksheetSize.A4_LANDSCAPE,
-                questionsPerPage: 12
+                questionsPerPage: 18
             },
             worksheetCointainerStyleConfig: {
                 contentContainerHeight: '200mm',
