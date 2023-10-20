@@ -11,7 +11,7 @@ import type {
 
 import type {
     WorksheetContainerStyleConfig
-} from '$lib/constants/WorksheetPageConstants';
+} from '$lib/components/common/worksheet';;
 
 /**
  * Supposed would like to create a store with data structure like ThreeNumbersQuestionWorksheetConfig

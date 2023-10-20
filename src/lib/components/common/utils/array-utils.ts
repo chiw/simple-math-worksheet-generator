@@ -5,3 +5,5 @@ export const shuffleArray = (array) => {
     }
     return array;
 }
+
+export const getRandomIndex = (arr): number => Math.floor(Math.random() * arr.length);

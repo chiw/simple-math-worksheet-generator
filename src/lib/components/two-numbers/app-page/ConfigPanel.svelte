@@ -96,10 +96,27 @@
                 {/each}
             </Select>
 
+            {#if $questionConfigStore.questionFormat === TwoNumbersQuestionFormat.HORIZONTAL_METHOD}
+                <FormField>
+                    <Switch bind:checked={$questionConfigStore.showFirstNumber} />
+                    <span slot="label">Show 1st Number</span>
+                </FormField>
+
+                <FormField>
+                    <Switch bind:checked={$questionConfigStore.showSecondNumber} />
+                    <span slot="label">Show 2nd number</span>
+                </FormField>
+
+                <FormField>
+                    <Switch bind:checked={$questionConfigStore.showOperator} />
+                    <span slot="label">Show operator</span>
+                </FormField>
+            {/if}
+
             <FormField>
                 <Switch bind:checked={$questionConfigStore.showAnswers} />
                 <span slot="label">Show answers</span>
-            </FormField>        
+            </FormField>
         </details>
     
         <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={layoutSettingsOpen}>

@@ -1,3 +1,5 @@
+
+import { getRandomIndex } from "./array-utils";
 /**
  * numberblocks (for fun-multiplications)
  */
@@ -61,14 +63,14 @@ export const defaultImgCategoriesArr = [
     { category: 'mcdonalds', arr : mcdonaldsImg }
 ];
 
+export const imgCategoryNames:string[] = defaultImgCategoriesArr.map((category) => category.category);
 
+const getCategory = (category: string) => defaultImgCategoriesArr.filter((record) => record.category == category).at(0)?.arr;
+
+const getCategoriesWithIncludeList = (categoriesToInclude: string[]) => defaultImgCategoriesArr.filter((record) => !categoriesToInclude.some((catToInclude: string) => record.category === catToInclude));
 
 export const getRandomCategory = (): string => defaultImgCategoriesArr[getRandomIndex(defaultImgCategoriesArr)].category;
 
 export const getRandomIndexByCategory = (category: string): number => getRandomIndex(getCategory(category));
 
-const getCategory = (category: string)  => defaultImgCategoriesArr.filter((record) => record.category == category).at(0)?.arr;
-
 export const getImageByCategory = (category: string, index: number) => getCategory(category)?.at(index);
-
-export const getRandomIndex = (arr): number => Math.floor(Math.random() * arr.length);

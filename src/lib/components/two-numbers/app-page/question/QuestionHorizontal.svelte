@@ -7,6 +7,11 @@
 	export let operator = '';
 	export let answer = '';
 
+	export let showFirstNumber = true;
+	export let showSecondNumber = true;
+	export let showOperator = true;
+	export let showAnswer = true;
+
 	export let numberBoxMargin = '0';
 	export let operatorBoxMargin = '0';
 	export let questionContainerMargin = '';
@@ -14,17 +19,27 @@
 
 <div class="questionContainer" style="--fontSize:{fontSize};--questionContainerMargin:{questionContainerMargin}">
 	<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">
-		{firstNumber}
+		{#if showFirstNumber}
+			{firstNumber}
+		{/if}
 	</div>
 	<div class="operatorBox" style="--height:{height};--operatorBoxMargin:{operatorBoxMargin}">
-		{@html operator}
+		{#if showOperator}
+			{@html operator}
+		{:else}
+			<div style="border: 1px solid; height:10mm; width:10mm; border-radius: 1mm;"> </div>
+		{/if}
 	</div>
 	<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">
-		{secondNumber}
+		{#if showSecondNumber}
+			{secondNumber}
+		{/if}
 	</div>
 	<div class="operatorBox" style="--height:{height};--operatorBoxMargin:{operatorBoxMargin}">=</div>
 	<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">
-		{answer}
+		{#if showAnswer}
+			{answer}
+		{/if}
 	</div>
 </div>
 
@@ -51,5 +66,8 @@
 		height: var(--height);
 		margin: var(--operatorBoxMargin);
 		padding: 0px;
+		display: flex;
+    	justify-content: center;
+    	align-items: center;
 	}
 </style>

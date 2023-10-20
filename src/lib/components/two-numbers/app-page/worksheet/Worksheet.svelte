@@ -41,7 +41,11 @@
                         firstNumber={question.num1}
 						secondNumber={question.num2}
 						operator={question.operator}
-                        answer={questionConfig.showAnswers ? question.answer : ''}
+                        answer={question.answer}
+                        showFirstNumber={questionConfig.showFirstNumber}
+                        showSecondNumber={questionConfig.showSecondNumber}
+                        showOperator={questionConfig.showOperator}
+                        showAnswer = {questionConfig.showAnswers}
 						
                         width={horizonalMethodStyleConfig.numberBoxWidth}
 						height={horizonalMethodStyleConfig.numberBoxHeight}

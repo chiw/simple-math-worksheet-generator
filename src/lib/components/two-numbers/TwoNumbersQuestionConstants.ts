@@ -61,6 +61,9 @@ export type TwoNumbersQuestionWorksheetConfig = {
 
 export type TwoNumbersQuestionConfig = {
     questionFormat: TwoNumbersQuestionFormat,
+    showFirstNumber: boolean,
+    showSecondNumber: boolean,
+    showOperator: boolean,
     showAnswers: boolean
 }
 

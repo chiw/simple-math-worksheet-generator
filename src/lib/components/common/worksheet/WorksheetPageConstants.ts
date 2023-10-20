@@ -4,6 +4,7 @@ export const FlexDirectionOptions = {
     COLUMN : 'column',
     COLUMN_REVERSE : 'column-reverse'
 } as const
+export type FlexDirectionOptions = typeof FlexDirectionOptions[keyof typeof FlexDirectionOptions];
 export const FLEX_DIRECTION_OPTIONS = Object.values(FlexDirectionOptions);
 
 export const FlexWrapOptions = {
@@ -11,6 +12,7 @@ export const FlexWrapOptions = {
     WRAP : 'wrap',
     WRAP_REVERSE : 'wrap-reverse'
 } as const
+export type FlexWrapOptions = typeof FlexWrapOptions[keyof typeof FlexWrapOptions];
 export const FLEX_WRAP_OPTIONS = Object.values(FlexWrapOptions);
 
 export const FlexJustifyContentOptions = {
@@ -21,6 +23,7 @@ export const FlexJustifyContentOptions = {
     SPACE_AROUND : 'space-around',
     SPACE_EVENLY : 'space-evenly'
 } as const
+export type FlexJustifyContentOptions = typeof FlexJustifyContentOptions[keyof typeof FlexJustifyContentOptions];
 export const FLEX_JUSTIFY_CONTENT_OPTIONS = Object.values(FlexJustifyContentOptions);
 
 export const PaperSize = {

@@ -127,6 +127,9 @@ export const AppConstants = {
         A4: <TwoNumbersQuestionWorksheetConfig>{
             questionConfig : {
                 questionFormat: TwoNumbersQuestionFormat.COLUMN_METHOD,
+                showFirstNumber: true,
+                showSecondNumber: true,
+                showOperator: true,
                 showAnswers: false
             },            
             horizonalMethodStyleConfig: {
@@ -162,14 +165,17 @@ export const AppConstants = {
         A4_LANDSCAPE: <TwoNumbersQuestionWorksheetConfig>{
             questionConfig : {
                 questionFormat: TwoNumbersQuestionFormat.HORIZONTAL_METHOD,
+                showFirstNumber: true,
+                showSecondNumber: true,
+                showOperator: true,
                 showAnswers: false
             },            
             horizonalMethodStyleConfig: {
-                fontSize: '56px',
-                numberBoxWidth: '19mm',
-                numberBoxHeight: '19mm',
-                numberBoxMargin: '20px 1px 5px 1px',
-                operatorBoxMargin: '20px 1px 5px 1px',
+                fontSize: '40px',
+                numberBoxWidth: '17mm',
+                numberBoxHeight: '17mm',
+                numberBoxMargin: '10px 1px 5px 1px',
+                operatorBoxMargin: '10px 1px 5px 1px',
                 questionContainerMargin: '20px 90px 15px 90px',
             },
             columnMethodStyleConfig: {

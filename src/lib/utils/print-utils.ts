@@ -5,8 +5,10 @@ export function triggerPrinter(paperSize: PaperSize): void {
     let css_A4: string = '@page { size: A4; }';
     
     if (paperSize === PaperSize.A4_LANDSCAPE) {
+        console.log('trigger printer with ', paperSize);
         windowPrintWithOrientation(css_A4_landscape);
     } else {
+        console.log('trigger printer with ', paperSize);
         windowPrintWithOrientation(css_A4);
     }
 }

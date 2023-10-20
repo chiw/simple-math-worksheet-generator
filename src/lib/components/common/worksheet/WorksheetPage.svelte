@@ -7,6 +7,8 @@
 	export let contentFlexWrap: string;
 	export let contentJustifyContent: string;
 	export let contentAlignContent: string;
+
+	$: orientation = size.includes("landscape") ? "landscape" : "auto";
 </script>
 
 <div class="{size} pageBreak">
