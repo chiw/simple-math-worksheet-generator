@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "paraglide-js compile --namespace simple-math-worksheet-generator && vite build",
 		"preview": "vite preview",
 		"test": "pnpm run test:integration && pnpm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -21,6 +21,7 @@
 		"smui-theme-dark-expanded": "smui-theme compile static/smui-dark.css -i src/theme/dark -i ./node_modules -s expanded"
 	},
 	"devDependencies": {
+		"@inlang/paraglide-js": "1.0.0-prerelease.5",
 		"@material/animation": "^14.0.0",
 		"@material/base": "^14.0.0",
 		"@material/button": "^14.0.0",

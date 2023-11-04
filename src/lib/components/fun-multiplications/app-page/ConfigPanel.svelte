@@ -1,5 +1,7 @@
 <script lang="ts">
 
+    import * as m from "@inlang/paraglide-js/simple-math-worksheet-generator/messages";
+
     // SMUI text input
     import Textfield from '@smui/textfield';
     import HelperText from '@smui/textfield/helper-text';
@@ -79,7 +81,7 @@
 
     <div style="margin-left:0.5em">
         <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={basicSettingsOpen}>
-            <summary>Basic Settings</summary>
+            <summary>{m.configpanelbasicsettings()}</summary>
 
             <!-- <Set chips={FUN_MULTIPLICATION_WORKSHEET_SIZE} let:chip choice bind:selected={selectedWorksheetSize}>
                 <Chip {chip}>
@@ -87,7 +89,7 @@
                 </Chip>
             </Set> -->
 
-            <Textfield bind:value={$worksheetConfigStore.questionsPerPage} label="Questions per page" type="number" />
+            <Textfield bind:value={$worksheetConfigStore.questionsPerPage} label="{m.worksheetconfigquestionperpage()}" type="number" />
             
             <!-- <Select bind:value={$questionConfigStore.questionFormat} label="Question format">
                 <Option value="" />
@@ -98,22 +100,22 @@
             
             <FormField>
                 <Switch bind:checked={$questionConfigStore.showFirstNum} />
-                <span slot="label">Show 1st number</span>
+                <span slot="label">{m.questionconfigshowfirstnumber()}</span>
             </FormField>
 
             <FormField>
                 <Switch bind:checked={$questionConfigStore.showSecondNum} />
-                <span slot="label">Show 2nd number</span>
+                <span slot="label">{m.questionconfigshowsecondnumber()}</span>
             </FormField>
         
             <FormField>
                 <Switch bind:checked={$questionConfigStore.showAnswers} />
-                <span slot="label">Show answers</span>
+                <span slot="label">{m.questionconfigshowanswers()}</span>
             </FormField>
         </details>
     
         <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={layoutSettingsOpen}>
-            <summary>Page Layout Settings</summary>
+            <summary>{m.configpanelpagelayoutsettings()}</summary>
 
             <div>
                 <Textfield bind:value={$worksheetContainerStyleConfigStore.pagePadding} label="Page padding" />

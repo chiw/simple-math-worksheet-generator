@@ -1,5 +1,7 @@
 <script lang="ts">
 
+    import * as m from "@inlang/paraglide-js/simple-math-worksheet-generator/messages";
+
     // SMUI text input
     import Textfield from '@smui/textfield';
     import HelperText from '@smui/textfield/helper-text';
@@ -81,7 +83,7 @@
 
     <div style="margin-left:0.5em">
         <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={basicSettingsOpen}>
-            <summary>Basic Settings</summary>
+            <summary>{m.configpanelbasicsettings()}</summary>
 
             <!-- <Set chips={FUN_ALGEBRA_WORKSHEET_SIZE} let:chip choice bind:selected={selectedWorksheetSize}>
                 <Chip {chip}>
@@ -89,7 +91,7 @@
                 </Chip>
             </Set> -->
 
-            <Textfield bind:value={$worksheetConfigStore.questionsPerPage} label="Questions per page" type="number" />
+            <Textfield bind:value={$worksheetConfigStore.questionsPerPage} label={m.worksheetconfigquestionperpage()} type="number" />
             
             <!-- <Select bind:value={$questionConfigStore.questionFormat} label="Question format">
                 <Option value="" />
@@ -101,28 +103,28 @@
             {#if $questionTypestToGenerateConfigStore.length === 1 && $questionTypestToGenerateConfigStore.includes(FunAlgebraQuestionType.BASIC_LVL_1)}
                 <FormField>
                     <Switch bind:checked={$questionConfigStore.show1stAnswer} />
-                    <span slot="label">Show answer</span>
+                    <span slot="label">{m.questionconfigshowanswers()}</span>
                 </FormField>
             {:else}
                 <FormField>
                     <Switch bind:checked={$questionConfigStore.show1stAnswer} />
-                    <span slot="label">Show 1st answer</span>
+                    <span slot="label">{m.questionconfigshowfirstanswer()}</span>
                 </FormField>
 
                 <FormField>
                     <Switch bind:checked={$questionConfigStore.show2ndAnswer} />
-                    <span slot="label">Show 2nd answer</span>
+                    <span slot="label">{m.questionconfigshowsecondanswer()}</span>
                 </FormField>
 
                 <FormField>
                     <Switch bind:checked={$questionConfigStore.show3rdAnswer} />
-                    <span slot="label">Show 3rd answer</span>
+                    <span slot="label">{m.questionconfigshowthirdanswer()}</span>
                 </FormField>
             {/if}
         </details>
     
         <details class="mdc-typography--subtitle1" style="padding-top:0.5em" bind:open={layoutSettingsOpen}>
-            <summary>Page Layout Settings</summary>
+            <summary>{m.configpanelpagelayoutsettings()}</summary>
 
             <div>
                 <Textfield bind:value={$worksheetContainerStyleConfigStore.pagePadding} label="Page padding" />

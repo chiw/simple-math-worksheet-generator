@@ -1,4 +1,6 @@
 <script lang="ts">
+    import * as m from "@inlang/paraglide-js/simple-math-worksheet-generator/messages";
+    
     // SMUI text input
     import Textfield from '@smui/textfield';
 
@@ -60,7 +62,7 @@
 <div>
     <FormField>
         <Checkbox bind:checked={$randomQuestionConfigStore} />
-        <span slot="label">Random Order</span>
+        <span slot="label">{m.questiongeneratorrandomorder()}</span>
     </FormField>
  </div>
 

@@ -1,0 +1,525 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"data": [
+		{
+			"id": "configpanelbasicsettings",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Basic Settings"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "基本設定"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "configpanelpagelayoutsettings",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Page Layout Settings"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "工作紙排版配置"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questionconfigquestionformat",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "問題格式"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Question format"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questionconfigshowanswers",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "顯示答案"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Show answers"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questionconfigshowfirstanswer",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Show 1st answer"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "顯示答案1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questionconfigshowfirstnumber",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "顯示第數字1"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Show 1st Number"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questionconfigshowoperator",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "顯示運算符號"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Show operator"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questionconfigshowsecondanswer",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Show 2nd answer"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "顯示答案2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questionconfigshowsecondnumber",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "顯示第數字2"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Show 2nd number"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questionconfigshowthirdanswer",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Show 3rd answer"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "顯示答案3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorallownegative",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "容許負數"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Allow negative"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorallowremainder",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "容許餘數"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Allow remainder"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorfirstnumrange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 1 範圍"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "1st Number range"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorrandomorder",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "隨機排序"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Random Order"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorresultmax",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "答案最大值"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Result max value"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorresultmin",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "答案最小值"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Result min value"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorreverse",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "倒序"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Reverse"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorsecondnumrange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 2 範圍"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "2nd Number range"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "questiongeneratorthirdnumrange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 3 範圍"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "3rd Number range"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "worksheetconfigquestionperpage",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Questions per page"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "每頁題數"
+						}
+					]
+				}
+			]
+		}
+	]
+}

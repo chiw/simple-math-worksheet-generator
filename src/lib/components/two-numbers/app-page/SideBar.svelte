@@ -1,4 +1,6 @@
 <script lang="ts">
+    import * as m from "@inlang/paraglide-js/simple-math-worksheet-generator/messages";
+
     // SMUI text input
     import Textfield from '@smui/textfield';
 
@@ -18,13 +20,13 @@
 
  <div>
     <Textfield style="margin-left:0.5em"
-        bind:value={$questionGeneratorConfigStore.firstNumRange} label="1st Number range" />
+        bind:value={$questionGeneratorConfigStore.firstNumRange} label={m.questiongeneratorfirstnumrange()} />
 
 
     <FormField>
         <Checkbox bind:checked={$questionGeneratorConfigStore.firstNumReverse} />
         <span slot="label">
-            Reverse
+            {m.questiongeneratorreverse()}
         </span>
     </FormField>
  </div>
@@ -32,39 +34,39 @@
 
  <div>
     <Textfield style="margin-left:0.5em"
-        bind:value={$questionGeneratorConfigStore.secondNumRange} label="2nd Number range" />
+        bind:value={$questionGeneratorConfigStore.secondNumRange} label="{m.questiongeneratorsecondnumrange()}" />
 
 
     <FormField>
         <Checkbox bind:checked={$questionGeneratorConfigStore.secondNumReverse} />
         <span slot="label">
-            Reverse
+            {m.questiongeneratorreverse()}
         </span>
     </FormField>
  </div>
 
  <div>
     <Textfield style="margin-left:0.5em" 
-        bind:value={$questionGeneratorConfigStore.resultMin} label="Result min value" type="number" />
+        bind:value={$questionGeneratorConfigStore.resultMin} label="{m.questiongeneratorresultmin()}" type="number" />
     
     <Textfield style="margin-left:0.5em"
-        bind:value={$questionGeneratorConfigStore.resultMax} label="Result max value" type="number" />
+        bind:value={$questionGeneratorConfigStore.resultMax} label="{m.questiongeneratorresultmax()}" type="number" />
     </div>
     
     <div>
     <FormField>
         <Checkbox bind:checked={$questionGeneratorConfigStore.allowNegative} />
-        <span slot="label">Allow negative</span>
+        <span slot="label">{m.questiongeneratorallownegative()}</span>
     </FormField>
 
     <FormField>
         <Checkbox bind:checked={$questionGeneratorConfigStore.allowRemainder} />
-        <span slot="label">Allow remainder</span>
+        <span slot="label">{m.questiongeneratorallowremainder()}</span>
     </FormField>
 
     <FormField>
         <Checkbox bind:checked={$questionGeneratorConfigStore.randomOrder} />
-        <span slot="label">Random Order</span>
+        <span slot="label">{m.questiongeneratorrandomorder()}</span>
     </FormField>
  </div>
 
