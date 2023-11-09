@@ -54,6 +54,240 @@
 			]
 		},
 		{
+			"id": "funalgebrabasiclvl1questionresultmaxvalue",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Result max value (n x m)"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "答案最大值 (n x m) "
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "funalgebrabasiclvl1questionvaluem",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "m (e.g.C = (m) B)"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "m (e.g.C = (m) B)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "funalgebrabasiclvl1questionvaluen",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "n (e.g. B = (n) A)"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "n (e.g. B = (n) A)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "funalgebrabasiclvl2questionnumarange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 A 範圍"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Number A range"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "funalgebrabasiclvl2questionnumbrange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 B 範圍"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Number B range"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "funalgebrabasiclvl2questionnumcrange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Number C range"
+						}
+					]
+				},
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 C 範圍"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "funalgebrabasiclvl3questionnumarange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 A 範圍"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Number A range"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "funalgebrabasiclvl3questionnumbrange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 B 範圍"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Number B range"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "funalgebrabasiclvl3questionnumcrange",
+			"selectors": [],
+			"variants": [
+				{
+					"languageTag": "zh",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "數值 C 範圍"
+						}
+					]
+				},
+				{
+					"languageTag": "en",
+					"match": [],
+					"pattern": [
+						{
+							"type": "Text",
+							"value": "Number C range"
+						}
+					]
+				}
+			]
+		},
+		{
 			"id": "questionconfigquestionformat",
 			"selectors": [],
 			"variants": [
