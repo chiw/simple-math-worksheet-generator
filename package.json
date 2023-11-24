@@ -21,7 +21,7 @@
 		"smui-theme-dark-expanded": "smui-theme compile static/smui-dark.css -i src/theme/dark -i ./node_modules -s expanded"
 	},
 	"devDependencies": {
-		"@inlang/paraglide-js": "1.0.0-prerelease.5",
+		"@inlang/paraglide-js": "1.0.0-prerelease.11",
 		"@material/animation": "^14.0.0",
 		"@material/base": "^14.0.0",
 		"@material/button": "^14.0.0",
