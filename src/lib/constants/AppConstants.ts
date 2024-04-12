@@ -37,6 +37,17 @@ import {
     FunAlgebraQuestionType
 } from "../components/fun-algebra/FunAlgebraConstants";
 
+import { 
+    type ClockQuestionGeneratorConfig, 
+    type ClockWorksheetConfig, 
+    type ClockQuestionWorksheetConfig,
+    HoursRangeType,
+    MinutesRangeType, 
+    DigitalClockType, 
+    ClockQuestionType,     
+    ClockWorksheetSize 
+} from "../components/clock/ClockConstants";
+
 export const LargeScreenMinWidth: number = 768;
 
 export type AppFunctionType = {
@@ -65,6 +76,11 @@ export const AppFunction = {
         id: "funAlgebra",
         label: "Fun algebra",
         route: "/fun-algebra"
+    },
+    CLOCK: <AppFunctionType>{
+        id: "clock",
+        label: "Clock",
+        route: "/clock"
     }
 } as const
 
@@ -72,7 +88,8 @@ export const AppFunctionSelectList: AppFunctionType[] = [
     AppFunction.TWO_NUMBERS,
     AppFunction.THREE_NUMBERS,
     AppFunction.FUN_MULTIPLICATION,
-    AppFunction.FUN_ALGEBRA
+    AppFunction.FUN_ALGEBRA,
+    AppFunction.CLOCK
 ];
 
 export const getAppFunctionById = (appFunctionId: string): AppFunctionType => {
@@ -492,4 +509,32 @@ export const AppConstants = {
             }
         }
     },
+
+    DEFAULT_CLOCK_QUESTION_GENERATOR_CONFIG: <ClockQuestionGeneratorConfig> {
+        hoursRangeType: HoursRangeType.RANGE_24_HRS,
+        minutesRangeType: MinutesRangeType.RANGE_MINS_5,
+        digitalClockType: DigitalClockType.TYPE_AM_PM,
+        enableQuestionTypes: [ClockQuestionType.DIGITAL_CLOCK_QUESTION]
+    },
+
+    CLOCK_WORKSHEET_DEFAULT_CONFIG: {
+        A4: <ClockQuestionWorksheetConfig> {
+            questionConfig: {
+                showAnswerHour: false,
+                showAnswerMinute: false
+            },
+            worksheetConfig: {
+                worksheetSize: ClockWorksheetSize.A4,
+                questionsPerPage: 6
+            },
+            worksheetCointainerStyleConfig: {
+                contentContainerHeight: '276mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.CENTER,
+                contentAlignContent: 'center'
+            }
+        }
+    }
 } as const;

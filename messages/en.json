@@ -1,0 +1,11 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"configPanelBasicSettings": "Basic Settings",
+	"questionConfigShowFirstNumber": "Show 1st Number",
+	"worksheetConfigQuestionsPerPage": "Questions per page",
+	"questionConfigQuestionFormat": "Question format",
+	"questionConfigShowSecondNumber": "Show 2nd number",
+	"questionConfigShowOperator": "Show operator",
+	"questionConfigShowAnswers": "Show answers",
+	"configPanelPageLayoutSettings": "Page Layout Settings"
+}

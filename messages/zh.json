@@ -1,0 +1,11 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"configPanelBasicSettings": "基本設定",
+	"questionConfigShowFirstNumber": "顯示數字 1",
+	"worksheetConfigQuestionsPerPage": "每頁題數",
+	"questionConfigQuestionFormat": "問題格式",
+	"questionConfigShowSecondNumber": "顯示數字 2",
+	"questionConfigShowOperator": "顯示運算符號",
+	"questionConfigShowAnswers": "顯示答案",
+	"configPanelPageLayoutSettings": "工作紙排版配置"
+}
