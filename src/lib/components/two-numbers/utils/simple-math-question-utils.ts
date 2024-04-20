@@ -96,8 +96,14 @@ export class SimpleMathQuestionUtils {
             let remainQuestionToGen = numberOfQuestions - questionArr.length;
             let numOfQuestionToGen = (remainQuestionToGen < numberOfQuestionsForEachType) ? remainQuestionToGen : numberOfQuestionsForEachType;
 
+            let num1Arr = sortedNum1Arr;
+            let num2Arr = sortedNum2Arr;
+            if(operator == MathOperators.DIVIDE) {
+                num2Arr = parseRange('1-99', false);
+            }
+
             let twoNumberQuestionsByType: TwoNumbersQuestion[] = this.generateTwoNumbersQuestionsByType(
-                sortedNum1Arr, sortedNum2Arr, resultMin, resultMax, operator, allowNegative, allowRemainder, numOfQuestionToGen, maxTry);
+                num1Arr, num2Arr, resultMin, resultMax, operator, allowNegative, allowRemainder, numOfQuestionToGen, maxTry);
 
             questionArr = questionArr.concat(twoNumberQuestionsByType);
         }

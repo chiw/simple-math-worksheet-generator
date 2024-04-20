@@ -114,9 +114,9 @@ export const AppConstants = {
 
     DEFAULT_TWO_NUMBERS_QUESTION_GENERATOR_CONFIG: <TwoNumbersQuestionGeneratorConfig>{
         firstNumRange: '0 - 1000',
-        firstNumReverse: true,
+        firstNumReverse: false,
         secondNumRange: '0 - 1000',
-        secondNumReverse: true,
+        secondNumReverse: false,
         resultMin: 0,
         resultMax: 2000,
         allowNegative: false,
