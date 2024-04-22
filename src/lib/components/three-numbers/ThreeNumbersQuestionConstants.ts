@@ -6,7 +6,8 @@ export type ThreeNumbersQuestion = {
     num1: number;
     num2: number;
     num3: number;
-    operator: string;
+    firstOperator: string;
+    secondOperator: string;
     answer: number;
 }
 
@@ -31,6 +32,7 @@ export type ThreeNumbersQuestionGeneratorConfig = {
     allowNegative: boolean,
     allowRemainder: boolean,
     randomOrder: boolean,
+    maxNumberOfQuestions: number,
     questionOperator: string[],
 }
 

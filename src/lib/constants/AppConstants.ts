@@ -206,17 +206,18 @@ export const AppConstants = {
     },
 
     DEFAULT_THREE_NUMBERS_QUESTION_GENERATOR_CONFIG: <ThreeNumbersQuestionGeneratorConfig>{
-        firstNumRange: '2 - 15',
+        firstNumRange: '1 - 10',
         firstNumReverse: true,
         secondNumRange: '1 - 10',
         secondNumReverse: true,
         thirdNumRange: '1 - 10',
         thirdNumReverse: true,
         resultMin: 0,
-        resultMax: 20,
+        resultMax: 30,
         allowNegative: false,
         allowRemainder: false,
         randomOrder: true,
+        maxNumberOfQuestions: 100,
         questionOperator: [MathOperators.PLUS, MathOperators.MINUS],
     },
 

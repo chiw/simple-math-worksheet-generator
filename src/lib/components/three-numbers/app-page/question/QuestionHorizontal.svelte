@@ -5,7 +5,8 @@
 	export let firstNumber = '';
 	export let secondNumber = '';
 	export let thirdNumber = '';
-	export let operator = '';
+	export let firstOperator = '';
+	export let secondOperator = '';
 	export let answer = '';
 
 	export let numberBoxMargin = '0';
@@ -18,13 +19,13 @@
 		{firstNumber}
 	</div>
 	<div class="operatorBox" style="--height:{height};--operatorBoxMargin:{operatorBoxMargin}">
-		{@html operator}
+		{@html firstOperator}
 	</div>
 	<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">
 		{secondNumber}
 	</div>
 	<div class="operatorBox" style="--height:{height};--operatorBoxMargin:{operatorBoxMargin}">
-		{@html operator}
+		{@html secondOperator}
 	</div>
 	<div class="numberBox" style="--height:{height};--width:{width};--numberBoxMargin:{numberBoxMargin}">
 		{thirdNumber}
