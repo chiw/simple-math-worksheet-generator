@@ -218,6 +218,9 @@ export const AppConstants = {
         allowRemainder: false,
         randomOrder: true,
         maxNumberOfQuestions: 100,
+        allowFirstNumBlank: false,
+        allowSecondNumBlank: true,
+        allowThirdNumBlank: true,
         questionOperator: [MathOperators.PLUS, MathOperators.MINUS],
     },
 

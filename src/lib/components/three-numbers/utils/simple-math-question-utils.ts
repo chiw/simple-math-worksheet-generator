@@ -21,16 +21,6 @@ export class SimpleMathQuestionUtils {
         let num3Arr: number[] = sortNumberArray(parseRange(
             threeNumbersQuestionGeneratorConfig.thirdNumRange, threeNumbersQuestionGeneratorConfig.thirdNumReverse));
 
-        // let worksheetData = this.generateThreeNumbersQuestionsWithParam(
-        //     num1Arr,
-        //     num2Arr,
-        //     num3Arr,
-        //     threeNumbersQuestionGeneratorConfig.resultMin,
-        //     threeNumbersQuestionGeneratorConfig.resultMax,
-        //     threeNumbersQuestionGeneratorConfig.questionOperator,
-        //     threeNumbersQuestionGeneratorConfig.allowNegative,            
-        //     threeNumbersQuestionGeneratorConfig.randomOrder);
-
         let worksheetData = this.generateThreeNumbersQuestionsWithParam(
             num1Arr,
             num2Arr,
@@ -40,7 +30,10 @@ export class SimpleMathQuestionUtils {
             threeNumbersQuestionGeneratorConfig.questionOperator,
             threeNumbersQuestionGeneratorConfig.allowNegative,            
             threeNumbersQuestionGeneratorConfig.randomOrder,
-            threeNumbersQuestionGeneratorConfig.maxNumberOfQuestions
+            threeNumbersQuestionGeneratorConfig.maxNumberOfQuestions,
+            threeNumbersQuestionGeneratorConfig.allowFirstNumBlank,
+            threeNumbersQuestionGeneratorConfig.allowSecondNumBlank,
+            threeNumbersQuestionGeneratorConfig.allowThirdNumBlank
         );
 
         console.log('generateThreeNumbersQuestions worksheetData: ', worksheetData);
@@ -48,46 +41,21 @@ export class SimpleMathQuestionUtils {
         return worksheetData;
     }
 
-    // private static generateThreeNumbersQuestionsWithParam(
-    //     num1Arr: number[], num2Arr: number[], num3Arr: number[],
-    //     resultMin: number, resultMax: number,
-    //     operators: string[],
-    //     allowNegative: boolean, randomOrder: boolean): WorkSheet[] {
-
-    //     let questionArr: ThreeNumbersQuestion[] = [];
-
-    //     for (const operator of operators) {
-    //         for (const num1 of num1Arr) {
-    //             for (const num2 of num2Arr) {
-    //                 for (const num3 of num3Arr) {
-    //                     let answer = calculate(operator, [num1, num2, num3]);
-    //                     if (!(!allowNegative && answer < 0)
-    //                         && !(resultMin && resultMin > answer)
-    //                         && !(resultMax && resultMax < answer)
-    //                         /* && !(!allowRemainder && requiresRemainderCheckMap(operator) && (num1 % num2 > 0) */
-    //                         ) {
-    //                         questionArr.push(this.createThreeNumbersQuestionType(num1, num2, num3, operator, answer));
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     if (randomOrder) {
-    //         shuffleArray(questionArr);
-    //     }
-
-    //     // return this.generateWorksheets(questionArr, questionsPerPage, pageSize);
-    //     return [<WorkSheet>{ questions: questionArr }];
-    // }
 
     private static generateThreeNumbersQuestionsWithParam(
         sortedNum1Arr: number[], sortedNum2Arr: number[], sortedNum3Arr: number[],
-        resultMin: number, resultMax: number,
-        operators: string[],
-        allowNegative: boolean, randomOrder: boolean, maxNumberOfQuestions: number): WorkSheet[] {
+        resultMin: number, resultMax: number, operators: string[],
+        allowNegative: boolean, randomOrder: boolean, maxNumberOfQuestions: number, 
+        allowFirstNumBlank: boolean, allowSecondNumBlank: boolean, allowThirdNumBlank: boolean
+    ): WorkSheet[] {
 
         let questionArr: ThreeNumbersQuestion[] = [];
+
+        let blankBoxArr = [];
+        blankBoxArr.push(0);
+        if(allowFirstNumBlank) { blankBoxArr.push(1); }
+        if(allowSecondNumBlank) { blankBoxArr.push(2); }
+        if(allowThirdNumBlank) { blankBoxArr.push(3); }
 
         let maxTry = 500;
         let tryCount = 0;
@@ -95,10 +63,12 @@ export class SimpleMathQuestionUtils {
         while(questionArr.length < maxNumberOfQuestions && tryCount < maxTry) {
             let firstOperator: string = operators[getArrRandomIndex(operators)];
             let secondOperator: string = operators[getArrRandomIndex(operators)];
+
+            let blankBoxIndex: number = blankBoxArr[getArrRandomIndex(blankBoxArr)];
        
             let threeNumbersQuestion: ThreeNumbersQuestion = this.generateThreeNumbersQuestion(sortedNum1Arr, sortedNum2Arr, sortedNum3Arr, 
                 resultMin, resultMax, firstOperator, secondOperator, 
-                allowNegative);
+                allowNegative, blankBoxIndex);
 
             if (this.isValidQuestion(threeNumbersQuestion, resultMin, resultMax)) {
                 questionArr.push(threeNumbersQuestion);
@@ -113,14 +83,13 @@ export class SimpleMathQuestionUtils {
             shuffleArray(questionArr);
         }
 
-        // return this.generateWorksheets(questionArr, questionsPerPage, pageSize);
         return [<WorkSheet>{ questions: questionArr }];
     }
 
     private static generateThreeNumbersQuestion(sortedNum1Arr: number[], sortedNum2Arr: number[], sortedNum3Arr: number[],
         resultMin: number, resultMax: number,
         firstOperator: string, secondOperator: string,
-        allowNegative: boolean): ThreeNumbersQuestion {
+        allowNegative: boolean, blankBoxIndex: number): ThreeNumbersQuestion {
 
         let maxTry = 100;
 
@@ -155,7 +124,7 @@ export class SimpleMathQuestionUtils {
             }
         }
 
-        return this.createThreeNumbersQuestionType(num1, num2, num3, firstOperator, secondOperator, threeNumsResult);
+        return this.createThreeNumbersQuestionType(num1, num2, num3, firstOperator, secondOperator, threeNumsResult, blankBoxIndex);
     }
 
     private static filterSecondNumArr(secondNumArr: number[], num1: number, operator: string): number[] {
@@ -173,7 +142,7 @@ export class SimpleMathQuestionUtils {
 
     
 
-    private static createThreeNumbersQuestionType(num1: number, num2: number, num3: number, firstOperator: string, secondOperator: string, answer: number): ThreeNumbersQuestion {
+    private static createThreeNumbersQuestionType(num1: number, num2: number, num3: number, firstOperator: string, secondOperator: string, answer: number, blankBoxIndex: number): ThreeNumbersQuestion {
         return <ThreeNumbersQuestion>{
             questionType: AppFunction.THREE_NUMBERS.id,
             num1: num1,
@@ -181,7 +150,8 @@ export class SimpleMathQuestionUtils {
             num3: num3,
             firstOperator: firstOperator,
             secondOperator: secondOperator,
-            answer: answer
+            answer: answer,
+            blankBoxIndex: blankBoxIndex
         }
     }
 
