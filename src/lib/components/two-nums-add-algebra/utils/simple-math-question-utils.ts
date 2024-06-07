@@ -1,5 +1,6 @@
 import { AppFunction } from '../../../constants';
 import type { WorkSheet, TwoNumsAddAlgebraQuestion, TwoNumsAddAlgebraQuestionGeneratorConfig } from '../TwoNumsAddAlgebraQuestionConstants';
+import type { TwoNumsAddAlgebraBlockIndex } from '../TwoNumsAddAlgebraQuestionConstants';
 import { shuffleArray, getArrRandomIndex, sortNumberArray } from '../../common/utils/array-utils';
 import { parseRange } from '../../../utils/number-ranage-parser-utils';
 import { requiresRemainderCheckMap, calculate, getRandomInt } from '../../common/utils/math-utils';
@@ -169,9 +170,18 @@ export class SimpleMathQuestionUtils {
 
         let blockDigit = blockDigitArr.length == 0 ? -1 : blockDigitArr[getArrRandomIndex(blockDigitArr)];
 
-        return this.createTwoNumbersQuestionType(num1, num2, operator, answer, blockNum, blockDigit);
+        let blockIndex1 = this.createTwoNumsAddAlgebraBlockIndex(blockNum, blockDigit);
+        let blockIndex2 = this.createTwoNumsAddAlgebraBlockIndex(-1, -1);
+        
+        return this.createTwoNumbersQuestionType(num1, num2, operator, answer, blockIndex1, blockIndex2);
     }
 
+    private static createTwoNumsAddAlgebraBlockIndex(blockNum: number, blockDigit: number) {
+        return <TwoNumsAddAlgebraBlockIndex> {
+            blockNum: blockNum,
+            blockDigit: blockDigit
+        }
+    }
     
 
     private static getSecondNum(num2Arr: number[], num1: number, 
@@ -216,15 +226,15 @@ export class SimpleMathQuestionUtils {
     }
 
     private static createTwoNumbersQuestionType(num1: number, num2: number, operator: string, answer: number, 
-        blockNum: number, blockDigit: number): TwoNumsAddAlgebraQuestion {
+        blockIndex1: TwoNumsAddAlgebraBlockIndex, blockIndex2: TwoNumsAddAlgebraBlockIndex): TwoNumsAddAlgebraQuestion {
         return <TwoNumsAddAlgebraQuestion>{
             questionType: AppFunction.TWO_NUMBERS.id,
             num1: num1,
             num2: num2,
             operator: operator,
             answer: answer,
-            blockNum: blockNum,
-            blockDigit: blockDigit
+            blockIndex1: blockIndex1,
+            blockIndex2: blockIndex2,
         }
     }
 

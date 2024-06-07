@@ -8,14 +8,19 @@ export const TwoNumsAddAlgebraMathOperators = {
 } as const;
 export const TWO_NUMS_ADD_ALGEBRA_MATH_OPERATORS = Object.values(TwoNumsAddAlgebraMathOperators);
 
+export type TwoNumsAddAlgebraBlockIndex = {
+    blockNum: number;
+    blockDigit: number;
+}
+
 export type TwoNumsAddAlgebraQuestion = {
     questionType: string;
     num1: number;
     num2: number;
     operator: string;
     answer: number;
-    blockNum: number;
-    blockDigit: number;
+    blockIndex1: TwoNumsAddAlgebraBlockIndex;
+    blockIndex2: TwoNumsAddAlgebraBlockIndex;
 }
 
 export type WorkSheet = {

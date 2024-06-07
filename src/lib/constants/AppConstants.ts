@@ -322,8 +322,10 @@ export const AppConstants = {
         randomOrder: true,
         questionOperator: [MathOperators.PLUS, MathOperators.MINUS],
         numberOfQuestions: 100,
-        blockNum: 1,
-        blockDigit: 1
+        blockIndices: [{
+            blockNum: 1,
+            blockDigit: 1
+        }]
     },
 
     TWO_NUMS_ADD_ALGEBRA_WORKSHEET_DEFAULT_CONFIG: {

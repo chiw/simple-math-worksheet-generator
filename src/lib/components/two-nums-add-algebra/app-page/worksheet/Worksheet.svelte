@@ -40,9 +40,8 @@
                     secondNumber={question.num2.toString()}
                     operator={question.operator}
                     answer={question.answer.toString()}
-                    showAnswers={questionConfig.showAnswers}
-                    blockNum={question.blockNum}
-                    blockDigit={question.blockDigit}
+                    showAnswers={questionConfig.showAnswers}                    
+                    blockIndices={[question.blockIndex1, question.blockIndex2]}
 
                     showQuestionId={columnMethodStyleConfig.showQuestionId}
                     questionIdFontSize={columnMethodStyleConfig.questionIdFontSize}
