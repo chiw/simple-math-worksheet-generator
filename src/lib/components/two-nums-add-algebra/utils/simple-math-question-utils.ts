@@ -1,5 +1,6 @@
 import { AppFunction } from '../../../constants';
-import type { WorkSheet, TwoNumbersQuestion, TwoNumbersQuestionGeneratorConfig } from '../TwoNumbersQuestionConstants';
+import type { WorkSheet, TwoNumsAddAlgebraQuestion, TwoNumsAddAlgebraQuestionGeneratorConfig } from '../TwoNumsAddAlgebraQuestionConstants';
+import type { TwoNumsAddAlgebraBlockIndex } from '../TwoNumsAddAlgebraQuestionConstants';
 import { shuffleArray, getArrRandomIndex, sortNumberArray } from '../../common/utils/array-utils';
 import { parseRange } from '../../../utils/number-ranage-parser-utils';
 import { requiresRemainderCheckMap, calculate, getRandomInt } from '../../common/utils/math-utils';
@@ -8,77 +9,34 @@ import { MathOperators } from '../../../constants';
 
 export class SimpleMathQuestionUtils {
 
-    static generateTwoNumbersQuestions(twoNumbersQuestionGeneratorConfig: TwoNumbersQuestionGeneratorConfig): WorkSheet[] {
+    static generateTwoNumbersQuestions(twoNumsAddAlgebraQuestionGeneratorConfig: TwoNumsAddAlgebraQuestionGeneratorConfig): WorkSheet[] {
 
-        console.log('twoNumbersQuestionGeneratorConfig', twoNumbersQuestionGeneratorConfig);
+        console.log('twoNumsAddAlgebraQuestionGeneratorConfig', twoNumsAddAlgebraQuestionGeneratorConfig);
 
         let num1Arr: number[] = sortNumberArray(parseRange(
-            twoNumbersQuestionGeneratorConfig.firstNumRange, twoNumbersQuestionGeneratorConfig.firstNumReverse));
+            twoNumsAddAlgebraQuestionGeneratorConfig.firstNumRange, twoNumsAddAlgebraQuestionGeneratorConfig.firstNumReverse));
         
         let num2Arr: number[] = sortNumberArray(parseRange(
-            twoNumbersQuestionGeneratorConfig.secondNumRange, twoNumbersQuestionGeneratorConfig.secondNumReverse));
-
-        // console.log('generateTwoNumbersQuestions num1Arr: ', num1Arr);
-        // console.log('generateTwoNumbersQuestions num2Arr: ', num2Arr);
-
-        // let worksheetData = this.generateTwoNumbersQuestionsWithParam(
-        //     num1Arr,
-        //     num2Arr,
-        //     twoNumbersQuestionGeneratorConfig.resultMin,
-        //     twoNumbersQuestionGeneratorConfig.resultMax,
-        //     twoNumbersQuestionGeneratorConfig.questionOperator,
-        //     twoNumbersQuestionGeneratorConfig.allowNegative,
-        //     twoNumbersQuestionGeneratorConfig.allowRemainder,
-        //     twoNumbersQuestionGeneratorConfig.randomOrder);
+            twoNumsAddAlgebraQuestionGeneratorConfig.secondNumRange, twoNumsAddAlgebraQuestionGeneratorConfig.secondNumReverse));
+       
 
         let worksheetData = this.generateTwoNumbersQuestionsWithParamAndNumberOfQuestions(
             num1Arr,
             num2Arr,
-            twoNumbersQuestionGeneratorConfig.resultMin,
-            twoNumbersQuestionGeneratorConfig.resultMax,
-            twoNumbersQuestionGeneratorConfig.questionOperator,
-            twoNumbersQuestionGeneratorConfig.allowNegative,
-            twoNumbersQuestionGeneratorConfig.allowRemainder,
-            twoNumbersQuestionGeneratorConfig.randomOrder,
-            twoNumbersQuestionGeneratorConfig.numberOfQuestions,
+            twoNumsAddAlgebraQuestionGeneratorConfig.resultMin,
+            twoNumsAddAlgebraQuestionGeneratorConfig.resultMax,
+            twoNumsAddAlgebraQuestionGeneratorConfig.questionOperator,
+            twoNumsAddAlgebraQuestionGeneratorConfig.allowNegative,
+            twoNumsAddAlgebraQuestionGeneratorConfig.allowRemainder,
+            twoNumsAddAlgebraQuestionGeneratorConfig.randomOrder,
+            twoNumsAddAlgebraQuestionGeneratorConfig.numberOfQuestions,
         );
 
         console.log('generateTwoNumbersQuestions worksheetData: ', worksheetData);
 
         return worksheetData;
     }
-
-    // private static generateTwoNumbersQuestionsWithParam(
-    //     num1Arr: number[], num2Arr: number[],
-    //     resultMin: number, resultMax: number,
-    //     operators: string[],
-    //     allowNegative: boolean, allowRemainder: boolean, randomOrder: boolean): WorkSheet[] {
-
-    //     let questionArr: TwoNumbersQuestion[] = [];
-
-    //     for (const operator of operators) {
-    //         for (const num1 of num1Arr) {
-    //             for (const num2 of num2Arr) {
-    //                 let answer = calculate(operator, [num1, num2]);
-    //                 if (!(!allowNegative && answer < 0)
-    //                     && !(resultMin && resultMin > answer)
-    //                     && !(resultMax && resultMax < answer)
-    //                     && !(!allowRemainder && requiresRemainderCheckMap(operator) && (num1 % num2 > 0))
-    //                 ) {
-    //                     questionArr.push(this.createTwoNumbersQuestionType(num1, num2, operator, answer));
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     if (randomOrder) {
-    //         shuffleArray(questionArr);
-    //     }
-
-    //     // return this.generateWorksheets(questionArr, questionsPerPage, pageSize);
-    //     return [<WorkSheet>{ questions: questionArr }];
-    // }
-
+    
     private static generateTwoNumbersQuestionsWithParamAndNumberOfQuestions(
         sortedNum1Arr: number[], sortedNum2Arr: number[],
         resultMin: number, resultMax: number,
@@ -88,7 +46,7 @@ export class SimpleMathQuestionUtils {
         let numberOfQuestionsForEachType = 0;
         numberOfQuestionsForEachType = (operators && operators.length > 0) ? (numberOfQuestions / operators.length) : 0;
 
-        let questionArr: TwoNumbersQuestion[] = [];
+        let questionArr: TwoNumsAddAlgebraQuestion[] = [];
 
         let maxTry = 500; /* maximum try to generate a question */
 
@@ -102,7 +60,7 @@ export class SimpleMathQuestionUtils {
                 num2Arr = parseRange('1-99', false);
             }
 
-            let twoNumberQuestionsByType: TwoNumbersQuestion[] = this.generateTwoNumbersQuestionsByType(
+            let twoNumberQuestionsByType: TwoNumsAddAlgebraQuestion[] = this.generateTwoNumbersQuestionsByType(
                 num1Arr, num2Arr, resultMin, resultMax, operator, allowNegative, allowRemainder, numOfQuestionToGen, maxTry);
 
             questionArr = questionArr.concat(twoNumberQuestionsByType);
@@ -119,10 +77,10 @@ export class SimpleMathQuestionUtils {
     private static generateTwoNumbersQuestionsByType(sortedNum1Arr: number[], sortedNum2Arr: number[],
         resultMin: number, resultMax: number,
         operator: string,
-        allowNegative: boolean, allowRemainder: boolean, numberOfQuestions: number, maxTry: number): TwoNumbersQuestion[] {
+        allowNegative: boolean, allowRemainder: boolean, numberOfQuestions: number, maxTry: number): TwoNumsAddAlgebraQuestion[] {
 
         
-        let questionArr: TwoNumbersQuestion[] = [];
+        let questionArr: TwoNumsAddAlgebraQuestion[] = [];
         let tryCount = 0;
 
         // pre-filter values that out of range for operation
@@ -131,7 +89,7 @@ export class SimpleMathQuestionUtils {
         
         while(questionArr.length < numberOfQuestions && tryCount < maxTry) {
             // console.log('generateTwoNumbersQuestionsByType questionArr.length: ', questionArr.length, ' numberOfQuestions: ', numberOfQuestions);
-            let twoNumbersQuestion: TwoNumbersQuestion = this.generateTwoNumbersQuestion(filteredNum1Arr, filteredNum2Arr, resultMin, resultMax, operator, allowNegative, allowRemainder);
+            let twoNumbersQuestion: TwoNumsAddAlgebraQuestion = this.generateTwoNumbersQuestion(filteredNum1Arr, filteredNum2Arr, resultMin, resultMax, operator, allowNegative, allowRemainder);
             if(this.isValidQuestion(twoNumbersQuestion, resultMin, resultMax)) {
                 questionArr.push(twoNumbersQuestion);
             } else {
@@ -175,7 +133,7 @@ export class SimpleMathQuestionUtils {
     private static generateTwoNumbersQuestion(num1Arr: number[], num2Arr: number[],
         resultMin: number, resultMax: number,
         operator: string,
-        allowNegative: boolean, allowRemainder: boolean): TwoNumbersQuestion {
+        allowNegative: boolean, allowRemainder: boolean): TwoNumsAddAlgebraQuestion {
 
         let maxTry = 100;
         let num1 = num1Arr[getArrRandomIndex(num1Arr)];
@@ -185,9 +143,45 @@ export class SimpleMathQuestionUtils {
         // console.log('generateTwoNumbersQuestion num2: ', num2);
         
         let answer = calculate(operator, [num1, num2]);
-        return this.createTwoNumbersQuestionType(num1, num2, operator, answer);
+
+        // calculate blockNum and blockDigit
+        let blockNumArr = [0, 1, 2];
+        // if(num1.toString().length > 1) {
+        //     blockNumArr.push(0);
+        // }
+        // if(num2.toString().length > 1) {
+        //     blockNumArr.push(1);
+        // }
+        // if(answer.toString().length > 1) {
+        //     blockNumArr.push(2);
+        // }
+        let blockNum = blockNumArr.length == 0 ? -1 : blockNumArr[getArrRandomIndex(blockNumArr)];
+
+        let blockDigitArr: number[] = [];
+        if (blockNum == 0) {
+            blockDigitArr = Array.from(Array(num1.toString().length).keys())
+        }
+        if (blockNum == 1) {
+            blockDigitArr = Array.from(Array(num2.toString().length).keys())
+        }
+        if (blockNum == 2) {
+            blockDigitArr = Array.from(Array(answer.toString().length).keys())
+        }
+
+        let blockDigit = blockDigitArr.length == 0 ? -1 : blockDigitArr[getArrRandomIndex(blockDigitArr)];
+
+        let blockIndex1 = this.createTwoNumsAddAlgebraBlockIndex(blockNum, blockDigit);
+        let blockIndex2 = this.createTwoNumsAddAlgebraBlockIndex(-1, -1);
+        
+        return this.createTwoNumbersQuestionType(num1, num2, operator, answer, blockIndex1, blockIndex2);
     }
 
+    private static createTwoNumsAddAlgebraBlockIndex(blockNum: number, blockDigit: number) {
+        return <TwoNumsAddAlgebraBlockIndex> {
+            blockNum: blockNum,
+            blockDigit: blockDigit
+        }
+    }
     
 
     private static getSecondNum(num2Arr: number[], num1: number, 
@@ -226,55 +220,21 @@ export class SimpleMathQuestionUtils {
         return false;
     }
 
-    private static isValidQuestion(twoNumbersQuestion: TwoNumbersQuestion, 
+    private static isValidQuestion(twoNumbersQuestion: TwoNumsAddAlgebraQuestion, 
         resultMin: number, resultMax: number): boolean {
             return twoNumbersQuestion && twoNumbersQuestion.answer >= resultMin && twoNumbersQuestion.answer <= resultMax;
     }
 
-    // private static generateTwoNumbersQuestion(num1Arr: number[], num2Arr: number[],
-    //     resultMin: number, resultMax: number,
-    //     operator: string,
-    //     allowNegative: boolean, allowRemainder: boolean): TwoNumbersQuestion {
-
-    //     let num1ArrMin = num1Arr[0];
-    //     let num1ArrMax = num1Arr[num1Arr.length - 1];
-
-    //     let num2ArrMin = num2Arr[0];
-    //     let num2ArrMax = num2Arr[num2Arr.length - 1];
-
-    //     // let num1 = num1Arr[getArrRandomIndex(num1Arr)];
-    //     let num1 = getRandomInt(num1ArrMin, num1ArrMax > resultMax ? resultMax : num1ArrMax);
-    //     let num2 = 0;
-
-    //     if(operator == MathOperators.PLUS) {
-    //          num2 = getRandomInt(num2ArrMin, Math.abs(num1 - resultMax));
-    //     }
-
-    //     if(operator == MathOperators.MINUS) {
-    //         num2 = allowNegative ? getRandomInt(num2ArrMin, num2ArrMax) : getRandomInt(num2ArrMin, num1 - resultMin);
-    //     }
-
-    //     if(operator == MathOperators.TIMES) {
-    //         num2 = getRandomInt(Math.floor(resultMin / num1) + 1, Math.floor(resultMax / num1));
-    //     }
-
-    //     if(operator == MathOperators.DIVIDE) {
-    //         num2 = getRandomInt(Math.floor(num1 / resultMin), Math.floor(num1 / resultMax));
-    //     }
-
-    //     let answer = calculate(operator, [num1, num2]);
-    //     return this.createTwoNumbersQuestionType(num1, num2, operator, answer);
-
-    // }
-
-
-    private static createTwoNumbersQuestionType(num1: number, num2: number, operator: string, answer: number): TwoNumbersQuestion {
-        return <TwoNumbersQuestion>{
+    private static createTwoNumbersQuestionType(num1: number, num2: number, operator: string, answer: number, 
+        blockIndex1: TwoNumsAddAlgebraBlockIndex, blockIndex2: TwoNumsAddAlgebraBlockIndex): TwoNumsAddAlgebraQuestion {
+        return <TwoNumsAddAlgebraQuestion>{
             questionType: AppFunction.TWO_NUMBERS.id,
             num1: num1,
             num2: num2,
             operator: operator,
-            answer: answer
+            answer: answer,
+            blockIndex1: blockIndex1,
+            blockIndex2: blockIndex2,
         }
     }
 

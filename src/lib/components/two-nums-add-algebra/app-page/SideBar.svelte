@@ -10,7 +10,7 @@
     import Chip, { Set, Text as ChipText } from '@smui/chips';
 
     // import contants    
-    import { MATH_OPERATORS } from '$lib/constants/MathsConstants';
+    import { TWO_NUMS_ADD_ALGEBRA_MATH_OPERATORS } from '../TwoNumsAddAlgebraQuestionConstants';
 
     // import stores
     import { questionGeneratorConfigStore } from '../stores';
@@ -73,7 +73,7 @@
         bind:value={$questionGeneratorConfigStore.numberOfQuestions} label="Max Number of questions" type="number" />
  </div>
 
-<Set chips={MATH_OPERATORS} let:chip filter bind:selected={$questionGeneratorConfigStore.questionOperator}>
+<Set chips={TWO_NUMS_ADD_ALGEBRA_MATH_OPERATORS} let:chip filter bind:selected={$questionGeneratorConfigStore.questionOperator}>
     <Chip {chip} touch>
         <ChipText>{@html chip}</ChipText>
     </Chip>

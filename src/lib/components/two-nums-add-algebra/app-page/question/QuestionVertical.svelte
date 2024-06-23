@@ -1,10 +1,15 @@
 <script lang="ts">
+    import type { TwoNumsAddAlgebraBlockIndex } from "../../TwoNumsAddAlgebraQuestionConstants";
+
     export let questionId:string = '1';
 	
     export let firstNumber:string = '';
 	export let secondNumber:string = '';
 	export let operator:string = '';
 	export let answer:string = '';
+
+    export let showAnswers:boolean = false;
+    export let blockIndices: TwoNumsAddAlgebraBlockIndex[];
 
     export let showQuestionId: boolean = false;
     export let questionIdFontSize: string = '5mm';
@@ -13,6 +18,24 @@
     export let questionContainerMargin: string = '3mm';
     export let questionContainerPadding: string = '2mm';
     export let questionRowNumberWidth: string = '24mm';
+
+    const shouldDisplayBlock = (numIndex: number, digitIndex: number, blockIndices: TwoNumsAddAlgebraBlockIndex[]) => {
+        for (let i = 0; i < blockIndices.length; i++) {
+            if (blockIndices[i].blockNum === numIndex && blockIndices[i].blockDigit == digitIndex) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    const shouldShowAnswer = (numIndex: number, digitIndex: number, showAnswers: boolean, blockIndices: TwoNumsAddAlgebraBlockIndex[]) => {
+        for (let i = 0; i < blockIndices.length; i++) {
+            if (blockIndices[i].blockNum === numIndex && blockIndices[i].blockDigit == digitIndex && !showAnswers) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 </script>
 
@@ -30,21 +53,27 @@
             <div class="questionOperatorColumn">{@html operator}</div>
             <div class="questionNumberStackColumn">
                 <div class="questionNumber" style="--questionRowNumberWidth:{questionRowNumberWidth}">
-                    {#each firstNumber as digit}
-                        <div class="questionNumberDigit" style="--questionRowNumberDigitWidth:{"5mm"};--questionRowNumberDigitBorderStyle:{"none"}">{digit}</div>
+                    {#each Array.from(firstNumber) as digit, index}
+                        <div class="questionNumberDigit" style="--questionRowNumberDigitWidth:{"5mm"};--questionRowNumberDigitBorderStyle:{shouldDisplayBlock(0, index, blockIndices) ? "solid" : "none"}">
+                            {shouldShowAnswer(0, index, showAnswers, blockIndices) ? digit : ''}
+                        </div>
                     {/each}
                 </div>
                 <div class="questionNumber" style="--questionRowNumberWidth:{questionRowNumberWidth}">
-                    {#each secondNumber as digit}
-                        <div class="questionNumberDigit" style="--questionRowNumberDigitWidth:{"5mm"};--questionRowNumberDigitBorderStyle:{"none"}">{digit}</div>
+                    {#each Array.from(secondNumber) as digit, index}
+                        <div class="questionNumberDigit" style="--questionRowNumberDigitWidth:{"5mm"};--questionRowNumberDigitBorderStyle:{shouldDisplayBlock(1, index, blockIndices) ? "solid" : "none"}">
+                            {shouldShowAnswer(1, index, showAnswers, blockIndices) ? digit : ''}
+                        </div>
                     {/each}
                 </div>
             </div>
         </div>
         <div class="answerRow">
             <div class="answerCell" style="--questionRowNumberWidth:{questionRowNumberWidth}">
-                {#each answer as digit}
-                    <div class="questionNumberDigit" style="--questionRowNumberDigitWidth:{"5mm"};--questionRowNumberDigitBorderStyle:{"none"}">{digit}</div>
+                {#each Array.from(answer) as digit, index}
+                    <div class="questionNumberDigit" style="--questionRowNumberDigitWidth:{"5mm"};--questionRowNumberDigitBorderStyle:{shouldDisplayBlock(2, index, blockIndices) ? "solid" : "none"}">
+                        {shouldShowAnswer(2, index, showAnswers, blockIndices) ? digit : ''}
+                    </div>
                 {/each}
             </div>
         </div>
@@ -96,6 +125,8 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        height: max-content;
+        min-height: 32px;
     }
 
     .questionOperatorColumn {
@@ -117,6 +148,8 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        height: max-content;
+        min-height: 32px;
     }
 
     .questionNumberDigit {

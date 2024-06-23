@@ -20,6 +20,13 @@ import {
     type ThreeNumbersQuestionGeneratorConfig 
 } from "../components/three-numbers/ThreeNumbersQuestionConstants";
 
+import {
+    TwoNumsAddAlgebraQuestionFormat,
+    TwoNumsAddAlgebraWorksheetSize,
+    type TwoNumsAddAlgebraQuestionWorksheetConfig,
+    type TwoNumsAddAlgebraQuestionGeneratorConfig
+} from "../components/two-nums-add-algebra/TwoNumsAddAlgebraQuestionConstants"
+
 import { 
     type FunMultiplicationQuestionGeneratorConfig,
     type FunMultiplicationQuestionWorksheetConfig,
@@ -67,6 +74,11 @@ export const AppFunction = {
         label: "Three numbers",
         route: "/three-numbers"
     },
+    TWO_NUMS_ADD_ALGEBRA : <AppFunctionType>{
+        id: "twoNumsAddAlgebra", 
+        label: "Two numbers algebra",
+        route: "/two-nums-add-algebra"
+    },
     FUN_MULTIPLICATION: <AppFunctionType>{ 
         id: "funMultiplication", 
         label: "Fun multiplication 1-10",
@@ -87,6 +99,7 @@ export const AppFunction = {
 export const AppFunctionSelectList: AppFunctionType[] = [
     AppFunction.TWO_NUMBERS,
     AppFunction.THREE_NUMBERS,
+    AppFunction.TWO_NUMS_ADD_ALGEBRA,
     AppFunction.FUN_MULTIPLICATION,
     AppFunction.FUN_ALGEBRA,
     AppFunction.CLOCK
@@ -130,16 +143,17 @@ export const AppConstants = {
     DEFAULT_QUESTIONS_PER_PAGE: 20,
 
     DEFAULT_TWO_NUMBERS_QUESTION_GENERATOR_CONFIG: <TwoNumbersQuestionGeneratorConfig>{
-        firstNumRange: '2 - 20',
-        firstNumReverse: true,
-        secondNumRange: '1 - 10',
-        secondNumReverse: true,
+        firstNumRange: '0 - 1000',
+        firstNumReverse: false,
+        secondNumRange: '0 - 1000',
+        secondNumReverse: false,
         resultMin: 0,
-        resultMax: 17,
+        resultMax: 2000,
         allowNegative: false,
         allowRemainder: false,
         randomOrder: true,
         questionOperator: [MathOperators.PLUS, MathOperators.MINUS],
+        numberOfQuestions: 100,
     },
 
     TWO_NUMBERS_WORKSHEET_DEFAULT_CONFIG: {
@@ -152,9 +166,9 @@ export const AppConstants = {
                 showAnswers: false
             },            
             horizonalMethodStyleConfig: {
-                fontSize: '50px',
-                numberBoxWidth: '18mm',
-                numberBoxHeight: '18mm',
+                fontSize: '40px',
+                numberBoxWidth: '16mm',
+                numberBoxHeight: '16mm',
                 numberBoxMargin: '20px 1px 5px 1px',
                 operatorBoxMargin: '20px 1px 5px 1px',
                 questionContainerMargin: '10px 30px 10px 30px',
@@ -222,17 +236,21 @@ export const AppConstants = {
     },
 
     DEFAULT_THREE_NUMBERS_QUESTION_GENERATOR_CONFIG: <ThreeNumbersQuestionGeneratorConfig>{
-        firstNumRange: '2 - 15',
+        firstNumRange: '1 - 10',
         firstNumReverse: true,
         secondNumRange: '1 - 10',
         secondNumReverse: true,
         thirdNumRange: '1 - 10',
         thirdNumReverse: true,
         resultMin: 0,
-        resultMax: 20,
+        resultMax: 30,
         allowNegative: false,
         allowRemainder: false,
         randomOrder: true,
+        maxNumberOfQuestions: 100,
+        allowFirstNumBlank: false,
+        allowSecondNumBlank: true,
+        allowThirdNumBlank: true,
         questionOperator: [MathOperators.PLUS, MathOperators.MINUS],
     },
 
@@ -297,6 +315,95 @@ export const AppConstants = {
             worksheetConfig: {
                 worksheetSize: ThreeNumbersWorksheetSize.A4_LANDSCAPE,
                 questionsPerPage: 12
+            },
+            worksheetCointainerStyleConfig: {
+                contentContainerHeight: '200mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.FLEX_START,
+                contentAlignContent: 'center'
+            }
+        }
+    },
+
+    DEFAULT_TWO_NUMS_ADD_ALGEBRA_QUESTION_GENERATOR_CONFIG: <TwoNumsAddAlgebraQuestionGeneratorConfig>{
+        firstNumRange: '0 - 1000',
+        firstNumReverse: false,
+        secondNumRange: '0 - 1000',
+        secondNumReverse: false,
+        resultMin: 0,
+        resultMax: 2000,
+        allowNegative: false,
+        allowRemainder: false,
+        randomOrder: true,
+        questionOperator: [MathOperators.PLUS, MathOperators.MINUS],
+        numberOfQuestions: 100,
+        blockIndices: [{
+            blockNum: 1,
+            blockDigit: 1
+        }]
+    },
+
+    TWO_NUMS_ADD_ALGEBRA_WORKSHEET_DEFAULT_CONFIG: {
+        A4: <TwoNumsAddAlgebraQuestionWorksheetConfig>{
+            questionConfig : {
+                questionFormat: TwoNumsAddAlgebraQuestionFormat.COLUMN_METHOD,
+                showFirstNumber: true,
+                showSecondNumber: true,
+                showOperator: true,
+                showAnswers: false
+            },
+            columnMethodStyleConfig: {
+                showQuestionId: false,
+                questionIdFontSize: '3mm',
+                questionIdWidth: '12mm',
+                questionFontSize: '7mm',
+                questionContainerMargin: '3mm',
+                questionContainerPadding: '2mm',
+                questionRowNumberWidth: '24mm'
+            },
+            worksheetConfig: {
+                worksheetSize: TwoNumbersWorksheetSize.A4,
+                questionsPerPage: 25
+            },
+            worksheetCointainerStyleConfig: {                
+                contentContainerHeight: '276mm',
+                pagePadding: '0mm',
+                flexDirection: FlexDirectionOptions.ROW,
+                flexWrap: FlexWrapOptions.WRAP,
+                flexJustifyContent: FlexJustifyContentOptions.CENTER,
+                contentAlignContent: 'center'
+            }
+        },
+        A4_LANDSCAPE: <TwoNumsAddAlgebraQuestionWorksheetConfig>{
+            questionConfig : {
+                questionFormat: TwoNumsAddAlgebraQuestionFormat.COLUMN_METHOD,
+                showFirstNumber: true,
+                showSecondNumber: true,
+                showOperator: true,
+                showAnswers: false
+            },            
+            horizonalMethodStyleConfig: {
+                fontSize: '30px',
+                numberBoxWidth: '15mm',
+                numberBoxHeight: '15mm',
+                numberBoxMargin: '10px 1px 5px 1px',
+                operatorBoxMargin: '10px 1px 5px 1px',
+                questionContainerMargin: '10px 50px 15px 50px',
+            },
+            columnMethodStyleConfig: {
+                showQuestionId: false,
+                questionIdFontSize: '3mm',
+                questionIdWidth: '12mm',
+                questionFontSize: '7mm',
+                questionContainerMargin: '3mm',
+                questionContainerPadding: '2mm',
+                questionRowNumberWidth: '24mm'
+            },
+            worksheetConfig: {
+                worksheetSize: TwoNumbersWorksheetSize.A4_LANDSCAPE,
+                questionsPerPage: 18
             },
             worksheetCointainerStyleConfig: {
                 contentContainerHeight: '200mm',
