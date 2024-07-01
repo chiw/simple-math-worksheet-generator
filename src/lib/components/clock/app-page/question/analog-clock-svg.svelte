@@ -1,7 +1,4 @@
 <script lang="ts">
-    // export let width = "50";
-    // export let height = "50";
-
     export let hours: number = 0;
     export let minutes: number = 0;
     export let seconds: number = 0;
@@ -10,19 +7,11 @@
     export let showHourHand: boolean = true;
     export let showMinuteHand: boolean = true;
     export let showSecondHand: boolean = false;
-    
-
-    let cx = 25;
-    let cy = 25;
-    let r = 25;
 </script>
 
 <svg viewBox='-50 -50 100 100'>
 
     <circle class='clock-face' r='48'/>
-
-    <!-- logo -->
-    <!-- <image href="./svelte-logo-horizontal.svg" width="30" height="30" x="-14" y="-30"></image> -->
 
     <!-- markers -->
     {#each [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55] as minute}
