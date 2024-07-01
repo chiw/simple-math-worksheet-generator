@@ -46,14 +46,14 @@
                     hours={question.hour} minutes={question.minute} seconds={0}
                     showDigitalClockHour={questionConfig.showAnswerHour}
                     showDigitalClockMinute={questionConfig.showAnswerMinute}
-                    showSecondMarking={false}
+                    showSecondMarking={true}
                     amPmMode={DigitalClockType.TYPE_AM_PM === question.digitalClockType}/>
             {:else if question.questionType === ClockQuestionType.ANALOG_CLOCK_QUESTION}
                 <ClockQuestionType1 questionNo={questionIndex + 1} 
                     hours={question.hour} minutes={question.minute} seconds={0}
                     showHourHand={questionConfig.showAnswerHour} 
                     showMinuteHand={questionConfig.showAnswerMinute}
-                    showSecondMarking={false}
+                    showSecondMarking={true}
                     amPmMode={DigitalClockType.TYPE_AM_PM === question.digitalClockType}/>
             {:else}
             {/if}        

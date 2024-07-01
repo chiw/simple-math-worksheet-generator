@@ -2,13 +2,17 @@
 
     import Analogclock from "./analogclock.svelte";
 
+    import AnalogClockSvg from "./analog-clock-svg.svelte";
+
     export let showQuestionNo: boolean = false;
     export let questionNo:number = 1;
+
+    export let showSecondMarking: boolean = true;
 
     export let showHourHand: boolean = true;
     export let showMinuteHand: boolean = true;
     export let showSecondHand: boolean = false;
-    export let showSecondMarking: boolean = true;
+    
 
     export let showDigitalClockHour: boolean = true;
     export let showDigitalClockMinute: boolean = true;
@@ -30,14 +34,21 @@
 
     export let amPmMode: boolean = true;
 
-    let ampm = hours >= 12 ? 'pm' : 'am';
-    
-    let hoursInAmPm: number = hours % 12;
-    hoursInAmPm = (hoursInAmPm == 0) ? 12 : hoursInAmPm; 
 
-    let hoursDisplayStr = String(amPmMode ? hoursInAmPm : hours);
-    let minutesDisplayStr = String(minutes).padStart(2, '0');
-    
+    const getHoursDisplayStr = (hours: number) => {
+        let hoursInAmPm: number = hours % 12;
+        hoursInAmPm = (hoursInAmPm == 0) ? 12 : hoursInAmPm;
+
+        return String(amPmMode ? hoursInAmPm : hours);
+    }
+
+    const getMinutesDisplayStr = (minutes: number) => {
+        return String(minutes).padStart(2, '0');
+    }
+
+    $: ampm = hours >= 12 ? 'pm' : 'am';
+    $: hoursDisplayStr = getHoursDisplayStr(hours);
+    $: minutesDisplayStr = getMinutesDisplayStr(minutes);
 </script>
 
 <div class="clockQuestionType1" style="--height:{height};--width:{width};--margin:{margin};--padding:{padding};--fontsize:{fontsize}">
@@ -45,7 +56,11 @@
         <div class="questionNo">{questionNo}.</div>
     {/if}
 
-    <Analogclock width= {clockWidth} height= {clockHeight} hours= {hours} minutes= {minutes} seconds={seconds} 
+    <!-- <Analogclock width= {clockWidth} height= {clockHeight} hours= {hours} minutes= {minutes} seconds={seconds} 
+        showHourHand={showHourHand} showMinuteHand={showMinuteHand}
+        showSecondHand={showSecondHand} showSecondMarking={showSecondMarking} /> -->
+    
+    <AnalogClockSvg hours={hours} minutes={minutes} seconds={seconds} 
         showHourHand={showHourHand} showMinuteHand={showMinuteHand}
         showSecondHand={showSecondHand} showSecondMarking={showSecondMarking} />
 
