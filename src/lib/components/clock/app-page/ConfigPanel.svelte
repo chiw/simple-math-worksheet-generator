@@ -19,12 +19,6 @@
     // import types and constants
     import { FLEX_DIRECTION_OPTIONS, FLEX_WRAP_OPTIONS, FLEX_JUSTIFY_CONTENT_OPTIONS, PaperSize } from '../../common/worksheet/WorksheetPageConstants';
 
-    // import { 
-    //     FunAlgebraQuestionFormat, FUN_ALGEBRA_QUESTION_FORMAT, 
-    //     FunAlgebraWorksheetSize, FUN_ALGEBRA_WORKSHEET_SIZE,
-    //     FunAlgebraQuestionType
-    // } from '../FunAlgebraConstants';
-
     import { 
         ClockWorksheetSize, CLOCK_WORKSHEET_SIZE,
         ClockQuestionType
@@ -44,7 +38,6 @@
     import { getWorksheetMsg } from '$lib/components/common/worksheet';
 	
 
-    // let selectedWorksheetSize = FunAlgebraWorksheetSize.A4;
     let selectedWorksheetSize = ClockWorksheetSize.A4;
 
     let totalPages: number = 0;
