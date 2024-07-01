@@ -42,25 +42,6 @@
     {/each}                                
 </Select>
 
-
-<!-- <Set chips={HOURS_RANGE_TYPE} let:chip filter bind:selected={$clockQuestionGeneratorConfigStore.hoursRangeType}>
-    <Chip {chip} touch>
-        <ChipText>{@html chip}</ChipText>
-    </Chip>
-</Set> -->
-
-<!-- <Set chips={MINUTES_RANGE_TYPE} let:chip filter bind:selected={$clockQuestionGeneratorConfigStore.minutesRangeType}>
-    <Chip {chip} touch>
-        <ChipText>{@html chip}</ChipText>
-    </Chip>
-</Set> -->
-
-<!-- <Set chips={DIGITAL_CLOCK_TYPE} let:chip filter bind:selected={$clockQuestionGeneratorConfigStore.digitalClockType}>
-    <Chip {chip} touch>
-        <ChipText>{@html chip}</ChipText>
-    </Chip>
-</Set> -->
-
 <style>
 
 </style>
