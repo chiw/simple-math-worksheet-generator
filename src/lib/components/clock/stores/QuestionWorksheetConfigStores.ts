@@ -2,13 +2,6 @@ import { writable } from 'svelte/store';
 
 import { AppConstants } from '../../../constants';
 
-// import type { 
-//     FunAlgebraQuestionConfig,
-//     FunAlgebraHorizontalMethodStyleConfig,
-//     FunAlgebraColumnMethodStyleConfig,
-//     FunAlgebraWorksheetConfig,
-// } from '../FunAlgebraConstants';
-
 
 import type { WorksheetContainerStyleConfig } from '../../common/worksheet/WorksheetPageConstants';
 import type { ClockQuestionConfig, ClockWorksheetConfig } from '../ClockConstants';
@@ -65,15 +58,6 @@ import type { ClockQuestionConfig, ClockWorksheetConfig } from '../ClockConstant
  *      - flexJustifyContent: FlexJustifyContentOptions,
  */
 
-// function createTwoNumbersQuestionConfigStore() {
-//     const { subscribe, set, update } = writable<TwoNumbersQuestionConfig>(AppConstants.WORKSHEET_DEFAULT_CONFIG.A4.questionConfig);
-
-//     return {
-//         subscribe,
-//         set: (config: TwoNumbersQuestionConfig) => set(config)
-//     };
-// }
-// export const twoNumbersQuestionConfigStore = createTwoNumbersQuestionConfigStore();
 
 function createQuestionConfigStore() {
     const { subscribe, set, update } = writable<ClockQuestionConfig>(AppConstants.CLOCK_WORKSHEET_DEFAULT_CONFIG.A4.questionConfig);
@@ -85,28 +69,6 @@ function createQuestionConfigStore() {
     };
 }
 
-
-// function createHorizontalMethodStyleConfigStore() {
-//     const { subscribe, set, update } = writable<FunAlgebraHorizontalMethodStyleConfig>(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.horizonalMethodStyleConfig);
-
-//     return {
-//         subscribe,
-//         set: (config: FunAlgebraHorizontalMethodStyleConfig) => set(config),
-//         reset: () => set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.horizonalMethodStyleConfig)
-//     };
-// }
-
-
-
-// function createColumnMethodStyleConfigStore() {
-//     const { subscribe, set, update } = writable<FunAlgebraColumnMethodStyleConfig>(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.columnMethodStyleConfig);
-
-//     return {
-//         subscribe,
-//         set: (config: FunAlgebraColumnMethodStyleConfig) => set(config),
-//         reset: () => set(AppConstants.FUN_ALGEBRA_WORKSHEET_DEFAULT_CONFIG.A4.columnMethodStyleConfig)
-//     };
-// }
 
 function createWorksheetConfigStore() {
     const { subscribe, set, update } = writable<ClockWorksheetConfig>(AppConstants.CLOCK_WORKSHEET_DEFAULT_CONFIG.A4.worksheetConfig);
@@ -130,7 +92,5 @@ function createWorksheetContainerStyleConfigStore() {
 
 
 export const questionConfigStore = createQuestionConfigStore();
-// export const horizontalMethodStyleConfigStore = createHorizontalMethodStyleConfigStore();
-// export const columnMethodStyleConfigStore = createColumnMethodStyleConfigStore();
 export const worksheetConfigStore = createWorksheetConfigStore();
 export const worksheetContainerStyleConfigStore = createWorksheetContainerStyleConfigStore();
